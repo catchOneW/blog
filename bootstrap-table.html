@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap.css">
+    <script src="./jquery-3.3.1.js"></script>
+    <script src="./bootstrap.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.12.1/bootstrap-table.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.12.1/bootstrap-table.js"></script>
+</head>
+
+<body>
+    <table id="myTable">
+
+    </table>
+</body>
+<script>
+    //http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/#%E5%A4%9A%E8%AF%AD%E8%A8%80
+    //https://www.cnblogs.com/wuhuacong/p/7284420.html
+    $(() => {
+        //排序触发的事件，修改req???  ok
+        //点按钮如何获得整行的数据??? ok
+        function getReq() {
+            var req = {};
+            return req;
+        }
+        function getBtn(v, r, i) {
+            return '<button id="bj">编辑</button>';
+        }
+        var eventHandle = {
+            'click #bj': function (e, value, row, index) {
+                console.log(row);
+            }
+        }
+        var bt = new BootstrapTable({
+            el: '#myTable',
+            method: 'GET',
+            url: 'http://localhost:3000/users',
+            queryParams: function (params) {
+                // limit
+                // :
+                // 5
+                // offset
+                // :
+                // 0
+                // order
+                // :
+                // "asc"
+                // search
+                // :
+                // undefined
+                // sort
+                // :
+                // undefined
+                var req = getReq();
+                return Object.assign({
+                    _page: (params.offset / params.limit) + 1,
+                    _limit: params.limit,
+                    _sort: params.sort,
+                    _order: params.order
+                }, req);
+            },
+            responseHandler: function (res) {
+                return {
+                    "rows": res, // 具体每一个bean的列表
+                    "total": 100  // 总共有多少条返回数据
+                };
+            },
+            pageNumber: 1,
+            pageSize: 5,
+            pagination: true,
+            sidePagination: 'server',
+            sortName:'id',
+            sortOrder: 'asc',
+            columns: [
+                {
+                    checkbox: true,
+                }
+                ,
+                {
+                    field: 'id',
+                    title: 'id',
+                    sortable: true
+                },
+                {
+                    field: 'name',
+                    title: 'name',
+                    sortable: true
+                },
+                {
+                    field: 'Button',
+                    title: '操作',
+                    formatter: getBtn,
+                    events: eventHandle,
+                }
+            ],
+        })
+    })
+
+    class BootstrapTable {
+        constructor(options) {
+            let defaultOptions = {
+            }
+            this.options = Object.assign(defaultOptions, options);
+            this.checkOptions()
+                .initHtml()
+                .bindEvents()
+        }
+        checkOptions() {
+            if (!this.options.el) {
+                throw new Error('el is required!');
+            }
+            return this;
+        }
+        initHtml() {
+            $(this.options.el).bootstrapTable(this.options);
+            return this;
+        }
+        bindEvents() {
+            return this;
+        }
+    }
+
+
+
+                // data: [
+                //     {
+                //         name: '1',
+                //         age: 1
+                //     },
+                //     {
+                //         name: '2',
+                //         age: 2
+                //     },
+                //     {
+                //         name: '3',
+                //         age: 3
+                //     },
+                //     {
+                //         name: '4',
+                //         age: 4
+                //     },
+                // ],
+                // onCheck: function (e) {
+                //     console.log(e);
+                // },
+                // onCheckAll: function (e) {
+                //     console.log(e);
+                // },
+
+</script>
+
+</html>
