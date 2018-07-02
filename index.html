@@ -5,66 +5,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>我的简历</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/layout.css">
+    <link rel="stylesheet" href="./css/gridBox.css">
+    <style>
+        body{
+            background-color: #ccc;
+        }
+        .header {
+            padding: 10px 10px;
+        }
+
+        .letter1,
+        letter2 {
+            font-size: 24px;
+        }
+
+        .letter1 {
+            color: #e6686a;
+            margin-right: 4px;
+        }
+        .letter2 {
+            color: #9a9da2;
+        }
+
+        .menu ul li {
+            float: left;
+            margin: 0 17px;
+            padding: 5px 0;
+            border-top: 2px solid transparent;
+            border-bottom: 2px solid transparent;
+        }
+
+        .menu ul li:hover {
+            border-bottom: 2px solid red;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="head">
-        <img src="" alt="">
-        <nav>
-            <ul>
+    <div class="header cf">
+        <div class="logo fl">
+            <span class="letter1">RS</span>
+            <span class="letter2">card</span>
+        </div>
+        <nav class="menu cf">
+            <ul class="fr">
                 <li>
-                    <a href="#">菜单1</a>
+                    <a href="">关于</a>
                 </li>
                 <li>
-                    <a href="#">菜单2</a>
+                    <a href="">技能</a>
                 </li>
                 <li>
-                    <a href="#">菜单3</a>
+                    <a href="">作品</a>
                 </li>
                 <li>
-                    <a href="#">菜单4</a>
+                    <a href="">博客</a>
                 </li>
                 <li>
-                    <a href="#">菜单5</a>
+                    <a href="">日历</a>
+                </li>
+                <li>
+                    <a href="">联系方式</a>
+                </li>
+                <li>
+                    <a href="">其他</a>
                 </li>
             </ul>
         </nav>
     </div>
-    <div class="bg"></div>
-    <div class="main">
-        <div>
-            <img src="" alt="">
-        </div>
-        <div>
-            <span>aaa</span>
-            <h1>aaaaaaaa</h1>
-            <p>aaaaaaaaaaaa</p>
-        </div>
-        <div>
-            <dl>
-                <dt>age</dt>
-                <dd>18</dd>
-            </dl>
-            <dl>
-                <dt>age</dt>
-                <dd>18</dd>
-            </dl>
-            <dl>
-                <dt>age</dt>
-                <dd>18</dd>
-            </dl>
-        </div>
-        <div class="foot">
-            <img src="" alt="...">
-            <img src="" alt="...">
-            <img src="" alt="...">
-            <img src="" alt="...">
-            <img src="" alt="...">
-            <img src="" alt="...">
-        </div>
-    </div>
-
 </body>
 
 </html>
