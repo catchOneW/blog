@@ -1,0 +1,45 @@
+body {
+    background-color: #ccc;
+}
+
+.taiji {
+    position: relative;
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(0, 0, 0, 1) 51%, rgba(0, 0, 0, 1) 100%);
+    animation: turn 2s infinite linear;
+}
+
+.taiji::before {
+    content: '';
+    position: absolute;
+    margin-top: 100px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: white;
+    border: 80px solid black;
+    left: 50%;
+}
+
+.taiji::after {
+    content: '';
+    position: absolute;
+    margin-top: 100px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: black;
+    border: 80px solid white;
+    left: 0;
+}
+
+@keyframes turn {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
