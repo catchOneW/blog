@@ -8,50 +8,28 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/layout.css">
-    <link rel="stylesheet" href="./css/gridBox.css">
-    <style>
-        body{
-            background-color: #ccc;
-        }
-        .header {
-            padding: 10px 10px;
-        }
-
-        .letter1,
-        letter2 {
-            font-size: 24px;
-        }
-
-        .letter1 {
-            color: #e6686a;
-            margin-right: 4px;
-        }
-        .letter2 {
-            color: #9a9da2;
-        }
-
-        .menu ul li {
-            float: left;
-            margin: 0 17px;
-            padding: 5px 0;
-            border-top: 2px solid transparent;
-            border-bottom: 2px solid transparent;
-        }
-
-        .menu ul li:hover {
-            border-bottom: 2px solid red;
+    <link rel="stylesheet" href="./css/box.css">
+    <link rel="stylesheet" href="./css/resume.css">
+    <script src="//at.alicdn.com/t/font_737599_u33sg5qt9db.js"></script>
+    <style type="text/css">
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
         }
     </style>
 </head>
 
 <body>
-    <div class="header cf">
-        <div class="logo fl">
-            <span class="letter1">RS</span>
-            <span class="letter2">card</span>
+    <div class="header clear">
+        <div class="logo fll">
+            <span>kaiqiw</span>
+            <span>简历</span>
         </div>
-        <nav class="menu cf">
-            <ul class="fr">
+        <div class="menu flr">
+            <ul class="nav">
                 <li>
                     <a href="">关于</a>
                 </li>
@@ -74,8 +52,152 @@
                     <a href="">其他</a>
                 </li>
             </ul>
-        </nav>
+        </div>
     </div>
+    <div class="banner">
+    </div>
+    <main class="myCard bbox m0a">
+        <div class="row info">
+            <div class="col5">
+                <img src="https://frankfang.github.io/resume-15-2/img/avatar.jpg" alt="">
+            </div>
+            <div class="col7">
+                <span class="tag">
+                    Hello
+                </span>
+                <h1>
+                    kaiqiw
+                </h1>
+                <p>
+                    前端开发工程师
+                </p>
+                <hr>
+                <div class="fields">
+                    <div class="row">
+                        <div class="col3">年龄</div>
+                        <div class="col7">18</div>
+                    </div>
+                    <div class="row">
+                        <div class="col3">所在城市</div>
+                        <div class="col7">深圳</div>
+                    </div>
+                    <div class="row">
+                        <div class="col3">邮箱</div>
+                        <div class="col7">fangyinghang@foxmail.com</div>
+                    </div>
+                    <div class="row">
+                        <div class="col3">手机</div>
+                        <div class="col7">13812345678</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="foot tac">
+            <a href="">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            </a>
+            <a href="">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-twitter"></use>
+                </svg>
+            </a>
+            <a href="">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            </a>
+        </div>
+    </main>
+
+    <section class="tac">
+        <div class="download tac mb20">
+            <a href="" download>下载简历</a>
+        </div>
+        <p class="tac mb50">
+            kaiqiw 资深前端工程师，资深前端讲师，现在在 饥人谷 教前端课程。
+            <br> 技能：前端开发，Rails 开发，Node.js 开发
+        </p>
+        <h1 class="tac mb20">
+            技能
+        </h1>
+        <div class="skill m0a mb50">
+            <div class="row">
+                <div class="col5">
+                    <p>HTML 5 & CSS 3</p>
+                    <div class="progress"></div>
+                </div>
+                <div class="col5">
+                    <p>HTML 5 & CSS 3</p>
+                    <div class="progress"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col5">
+                    <p>HTML 5 & CSS 3</p>
+                    <div class="progress"></div>
+                </div>
+                <div class="col5">
+                    <p>HTML 5 & CSS 3</p>
+                    <div class="progress"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col5">
+                    <p>HTML 5 & CSS 3</p>
+                    <div class="progress"></div>
+                </div>
+                <div class="col5">
+                    <p>HTML 5 & CSS 3</p>
+                    <div class="progress"></div>
+                </div>
+            </div>
+        </div>
+        <h1 class="tac mb20">
+            作品集
+        </h1>
+        <div class="proMenu dib">
+            <ul class="nav">
+                <li id="a">
+                    <a href="#1">所有</a>
+                </li>
+                <li id="b">
+                    <a href="#2">框架</a>
+                </li>
+                <li id="c">
+                    <a href="#3">原生CSS&JS</a>
+                </li>
+            </ul>
+            <div id="progress" class="progress a"></div>
+        </div>
+        <div class="proImg m0a">
+            <div class="row">
+                <div class="col8">
+                    <img src="https://frankfang.github.io/resume-15-3/img/1.jpg" alt="">
+                </div>
+                <div class="col4">
+                    <div>
+                        <img src="https://frankfang.github.io/resume-15-3/img/2.jpg" alt="">
+                    </div>
+                    <div>
+                        <img src="https://frankfang.github.io/resume-15-3/img/3.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
+<script>
+    a.onclick = function () {
+        progress.className = 'progress a';
+    }
+    b.onclick = function () {
+        progress.className = 'progress b';
+    }
+    c.onclick = function () {
+        progress.className = 'progress c';
+    }
+</script>
 
 </html>

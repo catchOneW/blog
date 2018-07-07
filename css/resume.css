@@ -1,0 +1,215 @@
+body {
+    background-color: #efefef;
+}
+
+ul.nav::after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+ul.nav li {
+    float: left;
+}
+
+ul.nav li>a {
+    display: block;
+}
+
+.menu ul.nav li {
+    color: aliceblue;
+    margin: 0 17px;
+    padding: 5px 0;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+}
+
+.menu ul.nav li:hover {
+    border-bottom: 2px solid #e6686a;
+}
+
+.logo span {
+    font-size: 24px;
+}
+
+.logo span:nth-child(1) {
+    color: #e6686a;
+    margin-right: 4px;
+}
+
+.logo span:nth-child(2) {
+    color: #9a9da2;
+}
+
+.header {
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.banner {
+    background-image: url('https://frankfang.github.io/resume-15-3/img/rs-cover.jpg');
+    height: 515px;
+    background-position: center center;
+    background-size: cover;
+}
+
+.banner::before {
+    content: '';
+    display: block;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7)
+}
+
+.myCard .tag {
+    display: inline-block;
+    position: relative;
+    background-color: #e6686a;
+    padding: 10px;
+    color: white;
+}
+
+.myCard .tag::before {
+    content: '';
+    position: absolute;
+    border: 10px solid transparent;
+    width: 0;
+    height: 0;
+    border-top-width: 0;
+    border-left-color: #e6686a;
+    top: 100%;
+    left: 10%;
+}
+
+.myCard .col7>* {
+    margin-bottom: 15px;
+}
+
+.myCard .fields>* {
+    margin-bottom: 15px;
+}
+
+.myCard .fields .col3 {
+    font-weight: bold;
+}
+
+.myCard {
+    max-width: 940px;
+    background-color: #fff;
+}
+
+.myCard .info {
+    padding: 50px;
+}
+
+.myCard .foot {
+    background-color: #e6686a;
+    padding: 10px 0;
+}
+
+.myCard .foot a {
+    display: inline-block;
+    padding: 5px;
+    margin: 0 10px;
+}
+
+.myCard .foot a:hover {
+    background-color: #cf5d5f;
+    border-radius: 50%;
+}
+
+.myCard .foot .icon {
+    fill: white;
+    height: 30px;
+    width: 30px;
+}
+
+.myCard {
+    margin-top: -340px;
+    margin-bottom: 20px;
+    box-shadow: -1px 7px 33px 0px rgba(0, 0, 0, 0.75);
+}
+
+.download a {
+    display: inline-block;
+    padding: 20px 50px;
+    border: 1px solid #cdcfd1;
+    transition: all 0.3s;
+}
+
+.download a:hover {
+    box-shadow: -1px 7px 33px 0px rgba(0, 0, 0, 0.75);
+}
+
+.skill {
+    max-width: 940px;
+    background-color: #fff;
+    padding: 40px;
+}
+
+.skill .row {
+    margin-bottom: 20px;
+}
+
+.skill .col5 {
+    width: 48%;
+}
+
+.skill .col5:nth-child(2) {
+    float: right;
+}
+
+.progress {
+    height: 4px;
+    background-color: #FAE1E1;
+}
+
+.progress::before {
+    content: '';
+    display: block;
+    height: 100%;
+    background-color: #cf5d5f;
+    width: 50%;
+}
+
+.proMenu ul.nav li {
+    margin: 0 17px;
+    padding: 5px 0;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+}
+
+.proMenu .progress::before {
+    transition: all 0.3s;
+}
+
+.proMenu .progress.a::before {
+    width: 20%;
+}
+
+.proMenu .progress.b::before {
+    margin-left: 25%;
+    width: 30%;
+}
+
+.proMenu .progress.c::before {
+    margin-left: 55%;
+    width: 40%;
+}
+
+.proImg {
+    max-width: 940px;
+    background-color: #fff;
+    padding: 40px;
+}
+
+.proImg .col4 {
+    float: right;
+}
+
+.proImg .col4 div:nth-child(2) {
+    margin-top: 27px;
+}

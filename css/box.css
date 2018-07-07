@@ -1,0 +1,19 @@
+.bbox {
+    box-sizing: border-box;
+}
+
+.m0a {
+    margin: 0 auto;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.mb50 {
+    margin-bottom: 50px;
+}
+
+.pd20 {
+    padding: 20px;
+}
