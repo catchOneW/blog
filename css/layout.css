@@ -26,7 +26,7 @@
     display: grid;
 }
 
-.cf::after {
+.clear::after {
     content: '';
     clear: both;
     display: block;
