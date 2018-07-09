@@ -1,17 +1,21 @@
-.bbox {
-    box-sizing: border-box;
+.mr10 {
+    margin-right: 10px;
 }
 
-.m0a {
-    margin: 0 auto;
+.mb10 {
+    margin-bottom: 10px;
 }
 
 .mb20 {
     margin-bottom: 20px;
 }
 
-.mb50 {
-    margin-bottom: 50px;
+.pd10 {
+    padding: 10px;
+}
+
+.pd10-0 {
+    padding: 10px 0;
 }
 
 .pd20 {
