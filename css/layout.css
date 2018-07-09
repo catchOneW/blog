@@ -14,18 +14,48 @@
     position: absolute;
 }
 
-.df {
-    display: flex;
+.poa-r {
+    position: absolute;
+    right: 0;
 }
+
+.dfr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dfc {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.dfc-100 {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.fx1 {
+    box-sizing: border-box;
+    flex: 1;
+}
+
+.fx2 {
+    box-sizing: border-box;
+    flex: 2;
+}
+
 .dib {
-   display: inline-block;
+    display: inline-block;
 }
 
 .dt {
     display: table;
 }
 
-.grid {
+.dg {
     display: grid;
 }
 
@@ -115,4 +145,44 @@
 
 .col1 {
     width: 8.33333333%;
+}
+
+.bbox {
+    box-sizing: border-box;
+}
+
+.ma {
+    margin: auto;
+}
+
+.mla {
+    margin-left: auto;
+}
+
+.mra {
+    margin-right: auto;
+}
+
+.m0a {
+    margin: 0 auto;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.bd {
+    border: 1px solid #ccc;
+}
+
+.bdl {
+    border-left: 1px solid #ccc;
+}
+
+.bdr {
+    border-right: 1px solid #ccc;
+}
+
+.bdb {
+    border-bottom: 1px solid #ccc;
 }
