@@ -19,11 +19,12 @@
     </div>
 </body>
 <script>
-    var arr = [
-        [{ 'q': 'http://qq.com' }, { 'w': 'http://qq.com' }, { 'e': 'http://qq.com' }, { 'r': 'http://qq.com' }, { 't': 'http://qq.com' }, { 'y': 'http://qq.com' }, { 'u': 'http://qq.com' }, { 'i': 'http://qq.com' }, { 'o': 'http://qq.com' }, { 'p': 'http://qq.com' },],
-        [{ 'a': 'http://qq.com' }, { 's': 'http://qq.com' }, { 'd': 'http://qq.com' }, { 'f': 'http://qq.com' }, { 'g': 'http://qq.com' }, { 'h': 'http://qq.com' }, { 'j': 'http://qq.com' }, { 'k': 'http://qq.com' }, { 'l': 'http://qq.com' },],
-        [{ 'z': 'http://qq.com' }, { 'x': 'http://qq.com' }, { 'c': 'http://qq.com' }, { 'v': 'http://qq.com' }, { 'b': 'http://baidu.com' }, { 'n': 'http://qq.com' }, { 'm': 'http://qq.com' },],
-    ]
+    var arr = JSON.parse(localStorage.getItem('data')) ||
+        [
+            [{ 'q': 'http://qq.com' }, { 'w': 'http://qq.com' }, { 'e': 'http://qq.com' }, { 'r': 'http://qq.com' }, { 't': 'http://qq.com' }, { 'y': 'http://qq.com' }, { 'u': 'http://qq.com' }, { 'i': 'http://qq.com' }, { 'o': 'http://qq.com' }, { 'p': 'http://qq.com' },],
+            [{ 'a': 'http://qq.com' }, { 's': 'http://qq.com' }, { 'd': 'http://qq.com' }, { 'f': 'http://qq.com' }, { 'g': 'http://qq.com' }, { 'h': 'http://qq.com' }, { 'j': 'http://qq.com' }, { 'k': 'http://qq.com' }, { 'l': 'http://qq.com' },],
+            [{ 'z': 'http://qq.com' }, { 'x': 'http://qq.com' }, { 'c': 'http://qq.com' }, { 'v': 'http://qq.com' }, { 'b': 'http://baidu.com' }, { 'n': 'http://qq.com' }, { 'm': 'http://qq.com' },],
+        ]
     function div() {
         return document.createElement('div')
     }
@@ -35,20 +36,32 @@
         let d = div()
         for (const obj of objs) {
             let k = kbd()
-            let key = Object.keys(obj)[0];
+            let key = Object.keys(obj)[0]
             let value = obj[key]
             k.innerText = key
             d.appendChild(k)
             //
-            document.addEventListener('keyup', e => {
-                if (e.key == key) {
-                    window.open(value)
+            k.onclick = e => {
+                let url = prompt('输入新的网址')
+                if (url) {
+                    obj[key] = 'http://' + url
+                    localStorage.setItem('data', JSON.stringify(arr))
                 }
-            })
+            }
         }
         box.appendChild(d)
         d.classList.add('dfr')
     }
+    document.addEventListener('keyup', e => {
+        for (const objs of arr) {
+            for (const obj of objs) {
+                let key = Object.keys(obj)[0]
+                if (e.key == key) {
+                    window.open(obj[key], '_blank')
+                }
+            }
+        }
+    })
 
 </script>
 
