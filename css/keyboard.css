@@ -1,5 +1,31 @@
 kbd {
-    padding: 20px;
-    background-color: aquamarine;
+    padding: 40px 50px;
     margin: 5px;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    background-color: black;
+    box-shadow: 8px 6px 34px -4px rgba(0, 0, 0, 0.75);
+    transition: all 0.3s;
+    position: relative;
+}
+
+kbd:hover {
+    transform: translate(0, 3%);
+}
+
+.icon {
+    /* background: url('https://xiedaimala.com/favicon.ico') no-repeat center center; */
+    position: absolute;
+    right: 0;
+    bottom:0;
+    width: 60px;
+    height: 30px;
+}
+
+.box {
+    flex-wrap: wrap;
+    align-content: center;
+    background: url('https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-670785.jpg') center center no-repeat;
+    background-size: cover;
 }
