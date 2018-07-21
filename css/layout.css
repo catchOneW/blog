@@ -27,6 +27,11 @@
     right: 0;
 }
 
+.poa-l {
+    position: absolute;
+    left: 0;
+}
+
 .dfr {
     display: flex;
     align-items: center;

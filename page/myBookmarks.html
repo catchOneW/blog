@@ -25,21 +25,22 @@
             [{ 'a': 'http://qq.com' }, { 's': 'http://qq.com' }, { 'd': 'http://qq.com' }, { 'f': 'http://qq.com' }, { 'g': 'http://qq.com' }, { 'h': 'http://qq.com' }, { 'j': 'http://qq.com' }, { 'k': 'http://qq.com' }, { 'l': 'http://qq.com' },],
             [{ 'z': 'http://qq.com' }, { 'x': 'https://xiedaimala.com' }, { 'c': 'http://qq.com' }, { 'v': 'http://qq.com' }, { 'b': 'http://baidu.com' }, { 'n': 'http://qq.com' }, { 'm': 'http://qq.com' },],
         ]
-    function div() {
-        return document.createElement('div')
-    }
-    function kbd() {
-        return document.createElement('kbd')
+    function tag(tagName, attrs) {
+        let el = document.createElement(tagName)
+        for (const key in attrs) {
+            el[key] = attrs[key]
+        }
+        return el
     }
     let box = document.querySelector('.box')
     for (const objs of arr) {
-        let d = div()
+        let row= tag('div',{className:'dfr'})
         for (const obj of objs) {
-            let k = kbd()
+            let k = tag('kbd')
             let key = Object.keys(obj)[0]
             let value = obj[key]
             k.innerText = key
-            d.appendChild(k)
+            row.appendChild(k)
             //
             k.onclick = e => {
                 let url = prompt('输入新的网址')
@@ -48,14 +49,15 @@
                     localStorage.setItem('data', JSON.stringify(arr))
                 }
             }
-            let before=div()
-            before.className='icon'
-            before.style.background = `url('${value}/favicon.ico') no-repeat center center`
+            let before = tag('img',{className:'icon'})
+            before.src = `${value}/favicon.ico`
+            before.onerror = e => {
+                console.log('下载失败')
+                e.target.src = 'http://qq.com/favicon.ico'
+            }
             k.appendChild(before)
         }
-        box.appendChild(d)
-        d.classList.add('dfr')
-
+        box.appendChild(row)
     }
     document.addEventListener('keyup', e => {
         for (const objs of arr) {

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/box.css">
+    <link rel="stylesheet" href="../css/paint.css">
+    <script src="//at.alicdn.com/t/font_737599_d1it1i9bt6v.js"></script>
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        .select {
+            transform: scale(1.5);
+        }
+
+        .selectTool {
+            transform: scale(1.5);
+            color: red;
+        }
+
+        .box2 span {
+            border-radius: 50%;
+            height: 20px;
+            width: 20px;
+            transition: all 0.3s linear;
+            margin-top: 10px;
+        }
+
+        .box3 {
+            top: 30%;
+        }
+
+        .box4 {
+            top: 70%;
+        }
+
+        #red {
+            background-color: red;
+        }
+
+        #green {
+            background-color: green;
+        }
+
+        #yellow {
+            background-color: yellow;
+        }
+
+        .box3 span {
+            width: 20px;
+            transition: all 0.3s linear;
+            margin-top: 10px;
+            background-color: black;
+        }
+
+        #w1 {
+            height: 5px;
+        }
+
+        #w2 {
+            height: 10px;
+        }
+
+        #w3 {
+            height: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="poa-l dfc ml10 mt10 box2">
+            <span id="red"></span>
+            <span id="green"></span>
+            <span id="yellow"></span>
+        </div>
+        <div class="poa-l dfc ml10  box3">
+            <span id="w1"></span>
+            <span id="w2"></span>
+            <span id="w3"></span>
+        </div>
+        <div class="poa-l dfc ml10 box4">
+            <span id="tool1" class="mt10 selectTool">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-pen"></use>
+                </svg>
+            </span>
+            <span id="tool2" class="mt10 ">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-ico-erasertool-May"></use>
+                </svg>
+            </span>
+            <span id="tool3" class="mt10">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-huishouzhan"></use>
+                </svg>
+            </span>
+            <span id="tool4" class="mt10">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-download"></use>
+                </svg>
+            </span>
+        </div>
+
+        <canvas id="pic"></canvas>
+    </div>
+</body>
+<script>
+    var dom = {
+        findEl(el) {
+            if (typeof el == 'string') {
+                el = document.querySelector(el)
+            }
+            return el
+        },
+        onPressMove(options) {
+            let start = false
+            let el = this.findEl(options.el)
+            el.onmousedown = e => {
+                start = true
+                options.pressed(e.clientX, e.clientY)
+            }
+            el.onmousemove = e => {
+                start && options.moved(e.clientX, e.clientY)
+            }
+            el.onmouseup = e => {
+                start = false
+            }
+        },
+        onPressMoveMoblie(options) {
+            let start = false
+            let el = this.findEl(options.el)
+            el.ontouchstart = e => {
+                start = true
+                options.pressed(e.touches[0].clientX, e.touches[0].clientY)
+            }
+            el.ontouchmove = e => {
+                start && options.moved(e.touches[0].clientX, e.touches[0].clientY)
+            }
+            el.ontouchend = e => {
+                start = false
+            }
+        },
+        onToggleClass(options) {
+            let el = this.findEl(options.el)
+            el.onclick = () => {
+                options.beforeToggle(el)
+                el.classList.toggle(options.class)
+                options.afterToggle(el.classList.contains(options.class), el)
+            }
+        },
+        walkToTop(options) {
+            let el = this.findEl(options.el)
+            let pre = el.previousElementSibling
+            while (pre) {
+                options.walkTo(pre)
+                pre = pre.previousElementSibling
+            }
+        },
+        walkToBottom(options) {
+            let el = this.findEl(options.el)
+            let next = el.nextElementSibling
+            while (next) {
+                options.walkTo(next)
+                next = next.nextElementSibling
+            }
+        },
+
+    }
+    var utility = {
+        drawline(context) {
+            return function (point1, point2, color, width) {
+                context.beginPath()
+                context.lineWidth = width;
+                context.strokeStyle = color
+                context.moveTo(point1.x, point1.y)
+                context.lineTo(point2.x, point2.y)
+                context.stroke()
+            }
+        },
+        eraser(context) {
+            return function (x, y, width = 20, height = 20) {
+                context.clearRect(x - width / 2, y - height / 2, width, height)
+            }
+        },
+        clear(context) {
+            return function (x, y, width = 20, height = 20) {
+                context.clearRect(x, y, width, height)
+            }
+        },
+        save(context) {
+            return function (type) {
+                return context.toDataURL(type)
+            }
+        },
+
+    }
+    //draw
+    var area = document.getElementById('pic')
+    var ctx = area.getContext('2d')
+    area.width = window.innerWidth
+    area.height = window.innerHeight
+    let drawOptions = {
+        el: document,
+        draw: utility.drawline(ctx),
+        eraser: utility.eraser(ctx),
+        drawColor: 'black',
+        width: 1,
+        canUse: true,
+        point1: { x: undefined, y: undefined },
+        point2: { x: undefined, y: undefined },
+        pressed(x, y) {
+            this.point1 = { x, y }
+        },
+        moved(x, y) {
+            if (this.canUse) {
+                this.point2 = { x, y }
+                this.draw(this.point1, this.point2, this.drawColor, this.width)
+                this.point1 = this.point2
+            } else {
+                this.eraser(x, y)
+            }
+        },
+    }
+    dom.onPressMove(drawOptions)
+    dom.onPressMoveMoblie(drawOptions)
+    //change color
+    function colorOptions(selector, color) {
+        return {
+            el: selector,
+            class: 'select',
+            beforeToggle(el) {
+                let walkOptions = {
+                    el: el,
+                    walkTo: to => {
+                        to.classList.remove(this.class)
+                    }
+                }
+                dom.walkToTop(walkOptions)
+                dom.walkToBottom(walkOptions)
+            },
+            afterToggle(isSelect, el) {
+                drawOptions.drawColor = isSelect ? color : 'black'
+            },
+        }
+    }
+    dom.onToggleClass(colorOptions('#red', 'red'))
+    dom.onToggleClass(colorOptions('#green', 'green'))
+    dom.onToggleClass(colorOptions('#yellow', 'yellow'))
+    //change width
+    function widthOptions(selector, width) {
+        return {
+            el: selector,
+            class: 'select',
+            beforeToggle(el) {
+                let walkOptions = {
+                    el: el,
+                    walkTo: to => {
+                        to.classList.remove(this.class)
+                    }
+                }
+                dom.walkToTop(walkOptions)
+                dom.walkToBottom(walkOptions)
+            },
+            afterToggle(isSelect, el) {
+                drawOptions.width = isSelect ? width : 1
+            },
+        }
+    }
+    dom.onToggleClass(widthOptions('#w1', 2))
+    dom.onToggleClass(widthOptions('#w2', 5))
+    dom.onToggleClass(widthOptions('#w3', 10))
+
+    //
+    function toolOptions(selector, fn) {
+        return {
+            el: selector,
+            class: 'selectTool',
+            beforeToggle(el) {
+                let walkOptions = {
+                    el: el,
+                    walkTo: to => {
+                        to.classList.remove(this.class)
+                    }
+                }
+                dom.walkToTop(walkOptions)
+                dom.walkToBottom(walkOptions)
+            },
+            afterToggle(isSelect, el) {
+                fn(isSelect, el)
+            },
+        }
+    }
+    //pen
+    dom.onToggleClass(toolOptions('#tool1', (isSelect, el) => {
+        drawOptions.canUse = isSelect
+    }))
+    //eraser
+    dom.onToggleClass(toolOptions('#tool2', (isSelect, el) => {
+        if (isSelect) {
+            drawOptions.canUse = false
+        }
+    }))
+    //clear all
+    dom.findEl('#tool3').onclick = function () {
+        utility.clear(ctx)(0, 0, area.width, area.height)
+    }
+    //down image
+    dom.findEl('#tool4').onclick = function () {
+        let imgUrl = utility.save(area)('image/png')
+        var a = document.createElement('a')
+        a.href = imgUrl
+        a.download = '图片名'
+        a.click()
+    }
+
+</script>
+
+</html>

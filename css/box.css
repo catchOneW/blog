@@ -2,6 +2,14 @@
     margin-right: 10px;
 }
 
+.ml10 {
+    margin-left: 10px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
 .mb10 {
     margin-bottom: 10px;
 }
@@ -20,4 +28,12 @@
 
 .pd20 {
     padding: 20px;
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
 }
