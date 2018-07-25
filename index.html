@@ -19,175 +19,213 @@
             fill: currentColor;
             overflow: hidden;
         }
+
+        .mask {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes spand {
+            0% {
+                border-left: 30px solid blueviolet;
+                border-top-width: 20px;
+                border-bottom-width: 20px;
+                opacity: 1;
+            }
+            100% {
+                border-left: 120px solid blueviolet;
+                border-top-width: 80px;
+                border-bottom-width: 80px;
+                opacity: 0;
+            }
+        }
+
+        .box1,
+        .box2 {
+            animation: spand 1.5s infinite linear;
+        }
+
+        .box2 {
+            animation-delay: 1s;
+        }
     </style>
 </head>
 
 <body>
-    <div class="header clear">
-        <div class="logo fll">
-            <span>kaiqiw</span>
-            <span>简历</span>
+    <div class="mask poa-full">
+        <div class="box2 triangle poa-c">
         </div>
-        <div class="menu flr">
-            <ul class="nav">
-                <li>
-                    <a href="">关于</a>
-                </li>
-                <li>
-                    <a href="">技能</a>
-                </li>
-                <li>
-                    <a href="">作品</a>
-                </li>
-                <li>
-                    <a href="">博客</a>
-                </li>
-                <li>
-                    <a href="">日历</a>
-                </li>
-                <li>
-                    <a href="">联系方式</a>
-                </li>
-                <li>
-                    <a href="">其他</a>
-                </li>
-            </ul>
+        <div class="box1 triangle poa-c">
         </div>
     </div>
-    <div class="banner">
-    </div>
-    <main class="myCard bbox m0a">
-        <div class="row info">
-            <div class="col5">
-                <img src="https://frankfang.github.io/resume-15-2/img/avatar.jpg" alt="">
+    <div class="main hide">
+        <div class="header clear">
+            <div class="logo fll">
+                <span>kaiqiw</span>
+                <span>简历</span>
             </div>
-            <div class="col7">
-                <span class="tag">
-                    Hello
-                </span>
-                <h1>
-                    kaiqiw
-                </h1>
-                <p>
-                    前端开发工程师
-                </p>
-                <hr>
-                <div class="fields">
-                    <div class="row">
-                        <div class="col3">年龄</div>
-                        <div class="col7">18</div>
-                    </div>
-                    <div class="row">
-                        <div class="col3">所在城市</div>
-                        <div class="col7">深圳</div>
-                    </div>
-                    <div class="row">
-                        <div class="col3">邮箱</div>
-                        <div class="col7">fangyinghang@foxmail.com</div>
-                    </div>
-                    <div class="row">
-                        <div class="col3">手机</div>
-                        <div class="col7">13812345678</div>
+            <div class="menu flr">
+                <ul class="nav">
+                    <li>
+                        <a href="">关于</a>
+                    </li>
+                    <li>
+                        <a href="">技能</a>
+                    </li>
+                    <li>
+                        <a href="">作品</a>
+                    </li>
+                    <li>
+                        <a href="">博客</a>
+                    </li>
+                    <li>
+                        <a href="">日历</a>
+                    </li>
+                    <li>
+                        <a href="">联系方式</a>
+                    </li>
+                    <li>
+                        <a href="">其他</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="banner">
+        </div>
+        <main class="myCard bbox m0a">
+            <div class="row info">
+                <div class="col5">
+                    <img src="https://frankfang.github.io/resume-15-2/img/avatar.jpg" alt="">
+                </div>
+                <div class="col7">
+                    <span class="tag">
+                        Hello
+                    </span>
+                    <h1>
+                        kaiqiw
+                    </h1>
+                    <p>
+                        前端开发工程师
+                    </p>
+                    <hr>
+                    <div class="fields">
+                        <div class="row">
+                            <div class="col3">年龄</div>
+                            <div class="col7">18</div>
+                        </div>
+                        <div class="row">
+                            <div class="col3">所在城市</div>
+                            <div class="col7">深圳</div>
+                        </div>
+                        <div class="row">
+                            <div class="col3">邮箱</div>
+                            <div class="col7">fangyinghang@foxmail.com</div>
+                        </div>
+                        <div class="row">
+                            <div class="col3">手机</div>
+                            <div class="col7">13812345678</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="foot tac">
-            <a href="">
-                <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-qq"></use>
-                </svg>
-            </a>
-            <a href="">
-                <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-twitter"></use>
-                </svg>
-            </a>
-            <a href="">
-                <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-github"></use>
-                </svg>
-            </a>
-        </div>
-    </main>
+            <div class="foot tac">
+                <a href="">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                </a>
+                <a href="">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-twitter"></use>
+                    </svg>
+                </a>
+                <a href="">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                </a>
+            </div>
+        </main>
 
-    <section class="tac">
-        <div class="download tac mb20">
-            <a href="" download>下载简历</a>
-        </div>
-        <p class="tac mb50">
-            kaiqiw 资深前端工程师，资深前端讲师，现在在 饥人谷 教前端课程。
-            <br> 技能：前端开发，Rails 开发，Node.js 开发
-        </p>
-        <h1 class="tac mb20">
-            技能
-        </h1>
-        <div class="skill m0a mb50">
-            <div class="row">
-                <div class="col5">
-                    <p>HTML 5 & CSS 3</p>
-                    <div class="progress"></div>
-                </div>
-                <div class="col5">
-                    <p>HTML 5 & CSS 3</p>
-                    <div class="progress"></div>
-                </div>
+        <section class="tac">
+            <div class="download tac mb20">
+                <a href="" download>下载简历</a>
             </div>
-            <div class="row">
-                <div class="col5">
-                    <p>HTML 5 & CSS 3</p>
-                    <div class="progress"></div>
-                </div>
-                <div class="col5">
-                    <p>HTML 5 & CSS 3</p>
-                    <div class="progress"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col5">
-                    <p>HTML 5 & CSS 3</p>
-                    <div class="progress"></div>
-                </div>
-                <div class="col5">
-                    <p>HTML 5 & CSS 3</p>
-                    <div class="progress"></div>
-                </div>
-            </div>
-        </div>
-        <h1 class="tac mb20">
-            作品集
-        </h1>
-        <div class="proMenu dib">
-            <ul class="nav">
-                <li id="a">
-                    <a href="#1">所有</a>
-                </li>
-                <li id="b">
-                    <a href="#2">框架</a>
-                </li>
-                <li id="c">
-                    <a href="#3">原生CSS&JS</a>
-                </li>
-            </ul>
-            <div id="progress" class="progress a"></div>
-        </div>
-        <div class="proImg m0a">
-            <div class="row">
-                <div class="col8">
-                    <img src="https://frankfang.github.io/resume-15-3/img/1.jpg" alt="">
-                </div>
-                <div class="col4">
-                    <div>
-                        <img src="https://frankfang.github.io/resume-15-3/img/2.jpg" alt="">
+            <p class="tac mb50">
+                kaiqiw 资深前端工程师，资深前端讲师，现在在 饥人谷 教前端课程。
+                <br> 技能：前端开发，Rails 开发，Node.js 开发
+            </p>
+            <h1 class="tac mb20">
+                技能
+            </h1>
+            <div class="skill m0a mb50">
+                <div class="row">
+                    <div class="col5">
+                        <p>HTML 5 & CSS 3</p>
+                        <div class="progress"></div>
                     </div>
-                    <div>
-                        <img src="https://frankfang.github.io/resume-15-3/img/3.jpg" alt="">
+                    <div class="col5">
+                        <p>HTML 5 & CSS 3</p>
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col5">
+                        <p>HTML 5 & CSS 3</p>
+                        <div class="progress"></div>
+                    </div>
+                    <div class="col5">
+                        <p>HTML 5 & CSS 3</p>
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col5">
+                        <p>HTML 5 & CSS 3</p>
+                        <div class="progress"></div>
+                    </div>
+                    <div class="col5">
+                        <p>HTML 5 & CSS 3</p>
+                        <div class="progress"></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+            <h1 class="tac mb20">
+                作品集
+            </h1>
+            <div class="proMenu dib">
+                <ul class="nav">
+                    <li id="a">
+                        <a href="#1">所有</a>
+                    </li>
+                    <li id="b">
+                        <a href="#2">框架</a>
+                    </li>
+                    <li id="c">
+                        <a href="#3">原生CSS&JS</a>
+                    </li>
+                </ul>
+                <div id="progress" class="progress a"></div>
+            </div>
+            <div class="proImg m0a">
+                <div class="row">
+                    <div class="col8">
+                        <img src="https://frankfang.github.io/resume-15-3/img/1.jpg" alt="">
+                    </div>
+                    <div class="col4">
+                        <div>
+                            <img src="https://frankfang.github.io/resume-15-3/img/2.jpg" alt="">
+                        </div>
+                        <div>
+                            <img src="https://frankfang.github.io/resume-15-3/img/3.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
+<script src="js/dom.js"></script>
+<script src="js/canvas.js"></script>
 <script>
     a.onclick = function () {
         progress.className = 'progress a';
@@ -198,6 +236,18 @@
     c.onclick = function () {
         progress.className = 'progress c';
     }
+
+    setTimeout(() => {
+        dom.toggleClass({
+            el: '.mask',
+            className: 'hide'
+        })
+        dom.toggleClass({
+            el: '.main',
+            className: 'hide'
+        })
+    }, 2000)
+
 </script>
 
 </html>

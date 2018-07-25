@@ -111,96 +111,9 @@
         <canvas id="pic"></canvas>
     </div>
 </body>
+<script src="../js/dom.js"></script>
+<script src="../js/canvas.js"></script>
 <script>
-    var dom = {
-        findEl(el) {
-            if (typeof el == 'string') {
-                el = document.querySelector(el)
-            }
-            return el
-        },
-        onPressMove(options) {
-            let start = false
-            let el = this.findEl(options.el)
-            el.onmousedown = e => {
-                start = true
-                options.pressed(e.clientX, e.clientY)
-            }
-            el.onmousemove = e => {
-                start && options.moved(e.clientX, e.clientY)
-            }
-            el.onmouseup = e => {
-                start = false
-            }
-        },
-        onPressMoveMoblie(options) {
-            let start = false
-            let el = this.findEl(options.el)
-            el.ontouchstart = e => {
-                start = true
-                options.pressed(e.touches[0].clientX, e.touches[0].clientY)
-            }
-            el.ontouchmove = e => {
-                start && options.moved(e.touches[0].clientX, e.touches[0].clientY)
-            }
-            el.ontouchend = e => {
-                start = false
-            }
-        },
-        onToggleClass(options) {
-            let el = this.findEl(options.el)
-            el.onclick = () => {
-                options.beforeToggle(el)
-                el.classList.toggle(options.class)
-                options.afterToggle(el.classList.contains(options.class), el)
-            }
-        },
-        walkToTop(options) {
-            let el = this.findEl(options.el)
-            let pre = el.previousElementSibling
-            while (pre) {
-                options.walkTo(pre)
-                pre = pre.previousElementSibling
-            }
-        },
-        walkToBottom(options) {
-            let el = this.findEl(options.el)
-            let next = el.nextElementSibling
-            while (next) {
-                options.walkTo(next)
-                next = next.nextElementSibling
-            }
-        },
-
-    }
-    var utility = {
-        drawline(context) {
-            return function (point1, point2, color, width) {
-                context.beginPath()
-                context.lineWidth = width;
-                context.strokeStyle = color
-                context.moveTo(point1.x, point1.y)
-                context.lineTo(point2.x, point2.y)
-                context.stroke()
-            }
-        },
-        eraser(context) {
-            return function (x, y, width = 20, height = 20) {
-                context.clearRect(x - width / 2, y - height / 2, width, height)
-            }
-        },
-        clear(context) {
-            return function (x, y, width = 20, height = 20) {
-                context.clearRect(x, y, width, height)
-            }
-        },
-        save(context) {
-            return function (type) {
-                return context.toDataURL(type)
-            }
-        },
-
-    }
     //draw
     var area = document.getElementById('pic')
     var ctx = area.getContext('2d')
@@ -234,7 +147,7 @@
     function colorOptions(selector, color) {
         return {
             el: selector,
-            class: 'select',
+            className: 'select',
             beforeToggle(el) {
                 let walkOptions = {
                     el: el,
@@ -257,7 +170,7 @@
     function widthOptions(selector, width) {
         return {
             el: selector,
-            class: 'select',
+            className: 'select',
             beforeToggle(el) {
                 let walkOptions = {
                     el: el,
@@ -281,7 +194,7 @@
     function toolOptions(selector, fn) {
         return {
             el: selector,
-            class: 'selectTool',
+            className: 'selectTool',
             beforeToggle(el) {
                 let walkOptions = {
                     el: el,
@@ -308,11 +221,11 @@
         }
     }))
     //clear all
-    dom.findEl('#tool3').onclick = function () {
+    dom.$el('#tool3').onclick = function () {
         utility.clear(ctx)(0, 0, area.width, area.height)
     }
     //down image
-    dom.findEl('#tool4').onclick = function () {
+    dom.$el('#tool4').onclick = function () {
         let imgUrl = utility.save(area)('image/png')
         var a = document.createElement('a')
         a.href = imgUrl
