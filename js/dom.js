@@ -5,6 +5,27 @@ var dom = {
         }
         return el
     },
+    onWheel(options) {
+        let el = this.$el(options.el)
+        el.onwheel = e => {
+            options.wheel()
+        }
+    },
+    onScroll(options) {
+        let el = this.$el(options.el)
+        el.onscroll = e => {
+            options.scroll()
+        }
+    },
+    onHover(options) {
+        let el = this.$el(options.el)
+        el.onmouseenter = e => {
+            options.mouseenter(e)
+        }
+        el.onmouseleave = e => {
+            options.mouseleave(e)
+        }
+    },
     onPressMove(options) {
         let start = false
         let el = this.$el(options.el)
@@ -44,6 +65,14 @@ var dom = {
     toggleClass(options) {
         let el = this.$el(options.el)
         el.classList.toggle(options.className)
+    },
+    add(options) {
+        let el = this.$el(options.el)
+        el.classList.add(options.className)
+    },
+    remove(options) {
+        let el = this.$el(options.el)
+        el.classList.remove(options.className)
     },
     walkToTop(options) {
         let el = this.$el(options.el)

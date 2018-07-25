@@ -47,6 +47,18 @@
         .box2 {
             animation-delay: 1s;
         }
+
+        .header-scroll {
+            top: 0;
+            padding: 10px;
+            position: sticky;
+            background-color: #fff;
+            box-shadow: -1px 7px 33px 0px rgba(0, 0, 0, 0.75);
+        }
+
+        .header-scroll li {
+            color: black !important;
+        }
     </style>
 </head>
 
@@ -65,26 +77,61 @@
             </div>
             <div class="menu flr">
                 <ul class="nav">
-                    <li>
-                        <a href="">关于</a>
+                    <li class="por">
+                        <a href="#about">关于</a>
+                        <ul class="poa-l hide">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="">技能</a>
+                    <li class="por">
+                        <a href="#skill">技能</a>
+                        <ul class="poa-l hide">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="">作品</a>
+                    <li class="por">
+                        <a href="#product">作品</a>
+                        <ul class="poa-l hide">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
                     </li>
-                    <li>
+                    <li class="por">
                         <a href="">博客</a>
+                        <ul class="poa-l hide">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
                     </li>
-                    <li>
+                    <li class="por">
                         <a href="">日历</a>
+                        <ul class="poa-l hide">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
                     </li>
-                    <li>
+                    <li class="por">
                         <a href="">联系方式</a>
+                        <ul class="poa-l hide">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
                     </li>
-                    <li>
+                    <li class="por">
                         <a href="">其他</a>
+                        <ul class="poa-l hide">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -92,7 +139,7 @@
         <div class="banner">
         </div>
         <main class="myCard bbox m0a">
-            <div class="row info">
+            <div id="about" class="row info">
                 <div class="col5">
                     <img src="https://frankfang.github.io/resume-15-2/img/avatar.jpg" alt="">
                 </div>
@@ -154,7 +201,7 @@
                 kaiqiw 资深前端工程师，资深前端讲师，现在在 饥人谷 教前端课程。
                 <br> 技能：前端开发，Rails 开发，Node.js 开发
             </p>
-            <h1 class="tac mb20">
+            <h1 id="skill" class="tac mb20">
                 技能
             </h1>
             <div class="skill m0a mb50">
@@ -189,7 +236,7 @@
                     </div>
                 </div>
             </div>
-            <h1 class="tac mb20">
+            <h1 id="product" class="tac mb20">
                 作品集
             </h1>
             <div class="proMenu dib">
@@ -226,6 +273,7 @@
 </body>
 <script src="js/dom.js"></script>
 <script src="js/canvas.js"></script>
+<script src="js/animate.js"></script>
 <script>
     a.onclick = function () {
         progress.className = 'progress a';
@@ -247,6 +295,71 @@
             className: 'hide'
         })
     }, 2000)
+
+
+    dom.onScroll({
+        el: document,
+        className: 'header-scroll',
+        scroll() {
+            if (window.scrollY > 0) {
+                dom.add({
+                    el: '.header',
+                    className: 'header-scroll'
+                })
+            } else {
+                dom.remove({
+                    el: '.header',
+                    className: 'header-scroll'
+                })
+            }
+        }
+    })
+
+
+    let liEls = document.querySelectorAll('.menu .nav>li')
+    for (let index = 0; index < liEls.length; index++) {
+        let li = liEls[index];
+        dom.onHover({
+            el: li,
+            mouseenter(e) {
+                dom.remove({
+                    el: li.lastElementChild,
+                    className: 'hide'
+                })
+            },
+            mouseleave(e) {
+                dom.add({
+                    el: li.lastElementChild,
+                    className: 'hide'
+                })
+            },
+        })
+
+    }
+
+    let aLinks = document.querySelectorAll('.menu .nav>li>a')
+    for (let index = 0; index < aLinks.length; index++) {
+        let aLink = aLinks[index];
+        aLink.onclick = function () {
+            let hash = aLink.getAttribute('href').slice(1)
+            let targetEL = document.getElementById(hash)
+            let y1 = window.scrollY
+            let y2 = targetEL.offsetTop-55
+            let dertaY = y2 - y1
+            animate.frameAnim({
+                T: Math.abs(dertaY) / 2,
+                easeFn: ease.linear,
+                dertaY: dertaY,
+                animated(percentX, percentY) {
+                    window.scrollTo(0, y1 + this.dertaY * percentY)
+                }
+            })
+            return false;
+        }
+    }
+
+
+
 
 </script>
 

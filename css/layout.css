@@ -210,3 +210,7 @@
 .hide {
     display: none;
 }
+
+.pos {
+    position: sticky;
+}
