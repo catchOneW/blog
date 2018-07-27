@@ -110,3 +110,69 @@ var dom = {
         }
 
 }
+
+
+
+var util = {
+    //a[i][j][k]
+    i: 0,
+    innerObj(key, vm) {
+        let obj = vm
+        key = key.split('.')
+        key.forEach(k => {
+            obj = obj[k]
+        })
+        return obj
+    },
+    giveToFragment(el) {
+        let fg = document.createDocumentFragment()
+        let child = el.firstChild
+        while (child) {
+            fg.appendChild(child)
+            child = el.firstChild
+        }
+        return fg
+    },
+    dfsNode(options) {
+        let el = options.el;
+        [].slice.call(el.childNodes).forEach(child => {
+            options.fn(child)
+            if (child.childNodes) {
+                this.dfsNode({ el: child, fn: options.fn, i: this.i })
+            }
+        })
+    },
+    bfsNode(options) {
+        let el = options.el;
+        let next = [];
+        [].slice.call(el.childNodes).forEach(child => {
+            options.fn(child);
+            [].slice.call(child.childNodes).forEach(cc => {
+                next.push(cc)
+            })
+        })
+        if (next.length > 0) {
+            this.bfsNode({ el: { childNodes: next }, fn: options.fn, i: this.i })
+        }
+    },
+    dfsObj(options) {
+        let el = options.el;
+        Object.keys(el).forEach(key => {
+            let value = el[key]
+            options.fn(value)
+            let childNodes = Object.keys(value)
+            if (childNodes && childNodes.length > 0) {
+                this.dfsObj({ el: value, fn: options.fn, i: this.i })
+            }
+        })
+    },
+
+}
+
+util.dfsObj({
+    el: { x: { a: 1, b: 2 }, y: 2 },
+    i: 0,
+    fn(e) {
+        console.log(e);
+    }
+})
