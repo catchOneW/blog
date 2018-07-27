@@ -90,5 +90,23 @@ var dom = {
             next = next.nextElementSibling
         }
     },
+      debounce(fn, t) {
+            var id
+            return function () {
+                var arr = arguments
+                clearTimeout(id)
+                id = setTimeout(function () {
+                    fn.apply(null, arr)
+                }, t)
+            }
+        },
+        composeKey() {
+            var s = ''
+            for (var index = 0; index < arguments.length; index++) {
+                var param = arguments[index];
+                s += param
+            }
+            return encodeURIComponent(s)
+        }
 
 }
