@@ -59,6 +59,10 @@
         .header-scroll li {
             color: black !important;
         }
+
+        .active {
+            border: 10px solid red;
+        }
     </style>
 </head>
 
@@ -297,6 +301,7 @@
     }, 2000)
 
 
+    let targetIds = ['about', 'skill', 'product']
     dom.onScroll({
         el: document,
         className: 'header-scroll',
@@ -312,6 +317,24 @@
                     className: 'header-scroll'
                 })
             }
+            let offsetTops = []
+            for (const iterator of targetIds) {
+                let el = dom.$el('#' + iterator)
+                offsetTops.push(el.offsetTop)
+            }
+            let index = util.minDistanc(window.scrollY, offsetTops)
+            //
+            for (const iterator of targetIds) {
+                let el = dom.$el('#' + iterator)
+                dom.remove({
+                    el: el,
+                    className: 'active'
+                })
+            }
+            dom.add({
+                el: dom.$el('#' + targetIds[index]),
+                className: 'active'
+            })
         }
     })
 
@@ -344,7 +367,7 @@
             let hash = aLink.getAttribute('href').slice(1)
             let targetEL = document.getElementById(hash)
             let y1 = window.scrollY
-            let y2 = targetEL.offsetTop-55
+            let y2 = targetEL.offsetTop - 55
             let dertaY = y2 - y1
             animate.frameAnim({
                 T: Math.abs(dertaY) / 2,
@@ -357,8 +380,6 @@
             return false;
         }
     }
-
-
 
 
 </script>

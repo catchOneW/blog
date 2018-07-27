@@ -90,24 +90,24 @@ var dom = {
             next = next.nextElementSibling
         }
     },
-      debounce(fn, t) {
-            var id
-            return function () {
-                var arr = arguments
-                clearTimeout(id)
-                id = setTimeout(function () {
-                    fn.apply(null, arr)
-                }, t)
-            }
-        },
-        composeKey() {
-            var s = ''
-            for (var index = 0; index < arguments.length; index++) {
-                var param = arguments[index];
-                s += param
-            }
-            return encodeURIComponent(s)
+    debounce(fn, t) {
+        var id
+        return function () {
+            var arr = arguments
+            clearTimeout(id)
+            id = setTimeout(function () {
+                fn.apply(null, arr)
+            }, t)
         }
+    },
+    composeKey() {
+        var s = ''
+        for (var index = 0; index < arguments.length; index++) {
+            var param = arguments[index];
+            s += param
+        }
+        return encodeURIComponent(s)
+    }
 
 }
 
@@ -166,13 +166,23 @@ var util = {
             }
         })
     },
+    minDistanc(n, arr) {
+        let i = 0
+        let min = Math.abs(arr[0] - n)
+        arr.forEach((item, index) => {
+            if (Math.abs(arr[index] - n) < min) {
+                i = index
+            }
+        })
+        return i
+    }
 
 }
 
-util.dfsObj({
-    el: { x: { a: 1, b: 2 }, y: 2 },
-    i: 0,
-    fn(e) {
-        console.log(e);
-    }
-})
+// util.dfsObj({
+//     el: { x: { a: 1, b: 2 }, y: 2 },
+//     i: 0,
+//     fn(e) {
+//         console.log(e);
+//     }
+// })
