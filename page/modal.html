@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/box.css">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+        .modal {
+            position: fixed;
+            left: 100px;
+            top: 100px;
+            right: 100px;
+            bottom: 100px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <div class="modal hide">
+    </div>
+</body>
+<script>
+    $('#btn').click(e => {
+        e.stopPropagation()
+        $('.modal').toggleClass('hide')
+    })
+    // $('.modal').click(e => {
+    //     e.stopPropagation()
+    // })
+    $(document).click(e => {
+        $('.modal').addClass('hide')
+    })
+</script>
+
+</html>
