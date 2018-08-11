@@ -350,16 +350,16 @@
             progress.className = 'progress c';
         }
 
-        // setTimeout(() => {
-        dom.toggleClass({
-            el: '.mask',
-            className: 'hide'
-        })
-        dom.toggleClass({
-            el: '.main',
-            className: 'hide'
-        })
-        // }, 2000)
+        setTimeout(() => {
+            dom.toggleClass({
+                el: '.mask',
+                className: 'hide'
+            })
+            dom.toggleClass({
+                el: '.main',
+                className: 'hide'
+            })
+        }, 2000)
 
 
         let targetIds = ['about', 'skill', 'product']
