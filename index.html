@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://cdn.bootcss.com/Swiper/4.3.0/css/swiper.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/layout.css">
     <link rel="stylesheet" href="./css/box.css">
@@ -62,6 +63,26 @@
 
         .active {
             border: 10px solid red;
+        }
+
+        .swiperBox {
+            max-width: 1020px;
+        }
+
+        .swiper-container {}
+
+        .swiper-button-next {
+            right: -10%;
+        }
+
+        .swiper-button-prev {
+            left: -10%;
+        }
+
+        [class*=swiper-button] {
+            border-radius: 50%;
+            background-color: #fff;
+            padding: 10px 20px
         }
     </style>
 </head>
@@ -273,23 +294,63 @@
                 </div>
             </div>
         </section>
+
+        <div class="swiperBox bg-w mlra mt20 por">
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img class="w100p" src="img/1.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="w100p" src="img/2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next poa"></div>
+            <div class="swiper-button-prev poa"></div>
+        </div>
+
+        <div class="mt20  bg-w">
+            <h1 id="product" class="tac mb20">
+                评论区
+            </h1>
+            <ul id="ulBox">
+
+            </ul>
+            <div>
+                <input id="comment" type="text" placeholder="请输入评论">
+                <input id="user" type="text" placeholder="请输入姓名">
+                <button id="add">提交</button>
+            </div>
+        </div>
     </div>
 </body>
+<script src="https://cdn.bootcss.com/Swiper/4.3.0/js/swiper.min.js"></script>
+<!-- 存储服务 -->
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.9.0/dist/av-min.js"></script>
+<!-- 实时消息服务 -->
+<script src="//cdn.jsdelivr.net/npm/leancloud-realtime@4.2.0/dist/realtime.browser.min.js"></script>
+
 <script src="js/dom.js"></script>
 <script src="js/canvas.js"></script>
 <script src="js/animate.js"></script>
 <script>
-    a.onclick = function () {
-        progress.className = 'progress a';
-    }
-    b.onclick = function () {
-        progress.className = 'progress b';
-    }
-    c.onclick = function () {
-        progress.className = 'progress c';
-    }
+    ; (function () {
 
-    setTimeout(() => {
+
+        a.onclick = function () {
+            progress.className = 'progress a';
+        }
+        b.onclick = function () {
+            progress.className = 'progress b';
+        }
+        c.onclick = function () {
+            progress.className = 'progress c';
+        }
+
+        // setTimeout(() => {
         dom.toggleClass({
             el: '.mask',
             className: 'hide'
@@ -298,89 +359,135 @@
             el: '.main',
             className: 'hide'
         })
-    }, 2000)
+        // }, 2000)
 
 
-    let targetIds = ['about', 'skill', 'product']
-    dom.onScroll({
-        el: document,
-        className: 'header-scroll',
-        scroll() {
-            if (window.scrollY > 0) {
+        let targetIds = ['about', 'skill', 'product']
+        dom.onScroll({
+            el: document,
+            className: 'header-scroll',
+            scroll() {
+                if (window.scrollY > 0) {
+                    dom.add({
+                        el: '.header',
+                        className: 'header-scroll'
+                    })
+                } else {
+                    dom.remove({
+                        el: '.header',
+                        className: 'header-scroll'
+                    })
+                }
+                let offsetTops = []
+                for (const iterator of targetIds) {
+                    let el = dom.$el('#' + iterator)
+                    offsetTops.push(el.offsetTop)
+                }
+                let index = util.minDistanc(window.scrollY, offsetTops)
+                //
+                for (const iterator of targetIds) {
+                    let el = dom.$el('#' + iterator)
+                    dom.remove({
+                        el: el,
+                        className: 'active'
+                    })
+                }
                 dom.add({
-                    el: '.header',
-                    className: 'header-scroll'
-                })
-            } else {
-                dom.remove({
-                    el: '.header',
-                    className: 'header-scroll'
-                })
-            }
-            let offsetTops = []
-            for (const iterator of targetIds) {
-                let el = dom.$el('#' + iterator)
-                offsetTops.push(el.offsetTop)
-            }
-            let index = util.minDistanc(window.scrollY, offsetTops)
-            //
-            for (const iterator of targetIds) {
-                let el = dom.$el('#' + iterator)
-                dom.remove({
-                    el: el,
+                    el: dom.$el('#' + targetIds[index]),
                     className: 'active'
                 })
             }
-            dom.add({
-                el: dom.$el('#' + targetIds[index]),
-                className: 'active'
-            })
-        }
-    })
-
-
-    let liEls = document.querySelectorAll('.menu .nav>li')
-    for (let index = 0; index < liEls.length; index++) {
-        let li = liEls[index];
-        dom.onHover({
-            el: li,
-            mouseenter(e) {
-                dom.remove({
-                    el: li.lastElementChild,
-                    className: 'hide'
-                })
-            },
-            mouseleave(e) {
-                dom.add({
-                    el: li.lastElementChild,
-                    className: 'hide'
-                })
-            },
         })
 
-    }
 
-    let aLinks = document.querySelectorAll('.menu .nav>li>a')
-    for (let index = 0; index < aLinks.length; index++) {
-        let aLink = aLinks[index];
-        aLink.onclick = function () {
-            let hash = aLink.getAttribute('href').slice(1)
-            let targetEL = document.getElementById(hash)
-            let y1 = window.scrollY
-            let y2 = targetEL.offsetTop - 55
-            let dertaY = y2 - y1
-            animate.frameAnim({
-                T: Math.abs(dertaY) / 2,
-                easeFn: ease.linear,
-                dertaY: dertaY,
-                animated(percentX, percentY) {
-                    window.scrollTo(0, y1 + this.dertaY * percentY)
-                }
+        let liEls = document.querySelectorAll('.menu .nav>li')
+        for (let index = 0; index < liEls.length; index++) {
+            let li = liEls[index];
+            dom.onHover({
+                el: li,
+                mouseenter(e) {
+                    dom.remove({
+                        el: li.lastElementChild,
+                        className: 'hide'
+                    })
+                },
+                mouseleave(e) {
+                    dom.add({
+                        el: li.lastElementChild,
+                        className: 'hide'
+                    })
+                },
             })
-            return false;
         }
-    }
 
+        let aLinks = document.querySelectorAll('.menu .nav>li>a')
+        for (let index = 0; index < aLinks.length; index++) {
+            let aLink = aLinks[index];
+            aLink.onclick = function () {
+                let hash = aLink.getAttribute('href').slice(1)
+                let targetEL = document.getElementById(hash)
+                let y1 = window.scrollY
+                let y2 = targetEL.offsetTop - 55
+                let dertaY = y2 - y1
+                animate.frameAnim({
+                    T: Math.abs(dertaY) / 2,
+                    easeFn: ease.linear,
+                    dertaY: dertaY,
+                    animated(percentX, percentY) {
+                        window.scrollTo(0, y1 + this.dertaY * percentY)
+                    }
+                })
+                return false;
+            }
+        }
+
+
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        //leancloud
+        var APP_ID = 'ShbWHTbDe490MJjPrROi89Ah-gzGzoHsz';
+        var APP_KEY = 'fPUASivv3vvBduC0a8bhgASH';
+
+        AV.init({
+            appId: APP_ID,
+            appKey: APP_KEY
+        });
+        var Table = AV.Object.extend('user');
+        var table = new Table();
+        //
+        add.onclick = function () {
+            table.save({
+                user: user.value,
+                word: comment.value
+            }).then(function (object) {
+                let a = document.createElement('li')
+                a.innerText = user.value + ':' + comment.value
+                ulBox.appendChild(a)
+            })
+        }
+        //
+        var query = new AV.Query('user');
+        query.find().then(function (res) {
+            let arr = res.map(x => x.attributes)
+            arr.forEach(element => {
+                let a = document.createElement('li')
+                a.innerText = element.user + ':' + element.word
+                ulBox.appendChild(a)
+            });
+        })
+
+    })()
 
 </script>
 
