@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #pageHtml {
+            width: 50%;
+        }
+
+        #pageMain {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 40%;
+            height: 100%;
+        }
+    </style>
+    <style id="pageStyle">
+    </style>
+</head>
+
+<body>
+    <pre id="pageHtml">
+        
+    </pre>
+    <div id="pageMain">
+
+    </div>
+</body>
+<script src="../js/prism.js"></script>
+<script>
+    function addLink() {
+        let l = document.createElement('link')
+        l.rel = 'stylesheet'
+        l.href = '../css/prism.css'
+        document.head.appendChild(l)
+    }
+    function writeHtml(doms, html) {
+        doms.forEach(dom => {
+            dom.innerHTML = html
+        })
+    }
+    let n = 0
+    let code = `
+         #pageHtml {
+            transition: all 1s linear;
+        }
+
+        #pageHtml {
+            background-color: #ccc;
+        }
+
+        #pageHtml {
+            border: 1px solid red;
+            padding: 30px;
+        }
+        #pageHtml {
+            transform: rotateY(360deg)
+        }
+        `
+    let id1 = setInterval(() => {
+        n++
+        if (n >= code.length) {
+            clearInterval(id1)
+            addLink()
+            task2()
+        }
+        writeHtml([pageHtml], Prism.highlight(code.slice(0, n), Prism.languages.css, 'css'))
+        writeHtml([pageStyle],
+            code.slice(0, n))
+    }, 10)
+
+    function task2() {
+        let n = 0
+        let code = `
+            我的姓名是xxx <br>
+            我的姓名是xxx <br>
+            我的姓名是xxx <br>
+            我的姓名是xxx <br>
+            我的姓名是xxx <br>
+            我的姓名是xxx <br>
+            我的姓名是xxx <br>
+            我的姓名是xxx <br>
+            我的姓名是xxx <br>
+            我的姓名是xxx <br>
+            我的姓名是xxx <br>
+            我的姓名是xxx <br>
+            我的姓名是xxx <br>
+            我的姓名是xxx <br>
+            我的姓名是xxx <br>
+            我的姓名是xxx <br>
+           
+        `
+
+        let id1 = setInterval(() => {
+            n++
+            if (n >= code.length) {
+                clearInterval(id1)
+                task3()
+            }
+            writeHtml([pageMain],
+                code.slice(0, n))
+        }, 10)
+    }
+    function task3() {
+        code = code + `
+        #pageMain {
+            background-color: #red;
+        }
+
+        #pageMain {
+            border: 1px solid red;
+            padding: 30px;
+        }
+        #pageMain {
+            border: 1px solid red;
+            padding: 30px;
+        }
+        #pageMain {
+            border: 1px solid red;
+            padding: 30px;
+        }
+        #pageMain {
+            border: 1px solid red;
+            padding: 30px;
+        }
+        #pageMain {
+            border: 1px solid red;
+            padding: 30px;
+        }
+        #pageMain {
+            border: 1px solid red;
+            padding: 30px;
+        }
+        #pageMain {
+            border: 1px solid red;
+            padding: 30px;
+        }
+        #pageMain {
+            border: 1px solid red;
+            padding: 30px;
+        }
+        #pageMain {
+            border: 1px solid red;
+            padding: 30px;
+        }
+        #pageMain {
+            border: 1px solid red;
+            padding: 30px;
+        }
+        #pageMain {
+            border: 1px solid red;
+            padding: 30px;
+        }
+        #pageMain {
+            border: 1px solid red;
+            padding: 30px;
+        }
+        #pageMain {
+            border: 1px solid red;
+            padding: 30px;
+        }
+        `
+        let id1 = setInterval(() => {
+            n++
+            if (n >= code.length) {
+                clearInterval(id1)
+            }
+            writeHtml([pageHtml], Prism.highlight(code.slice(0, n), Prism.languages.css, 'css'))
+            writeHtml([pageStyle],
+                code.slice(0, n))
+        }, 10)
+    }
+</script>
+
+</html>
