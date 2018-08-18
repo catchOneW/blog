@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <style>
+        .bg-y {
+            background-color: rgb(255, 220, 42)
+        }
+
+        .box1 {
+            left: 100px;
+            z-index: 2;
+        }
+
+        .a {
+            left: 21px;
+        }
+
+        .b {
+            top: 5px;
+            left: 5px;
+        }
+
+        .c {
+            left: 200px;
+        }
+
+        .d {
+            left: 125px;
+            top: 39px;
+            border-top: 10px solid black;
+        }
+
+        .e {
+            left: 31px;
+            top: 50px;
+            transform: rotate(-45deg);
+        }
+
+        .f {
+            left: 138px;
+            top: 50px;
+            transform: scaleX(-1) rotate(-45deg);
+        }
+
+        .g {
+            top: 114px;
+        }
+
+        .h {
+            top: 114px;
+            left: 356px;
+        }
+
+        .mouse {
+            width: 146px;
+            height: 399px;
+            left: 165px;
+            top: -200px;
+            bottom: 0;
+            overflow: hidden;
+
+        }
+
+        .box2 {
+            z-index: 1;
+            top: 58px;
+            overflow: hidden;
+        }
+
+        .mouseInner {
+            width: 175px;
+            height: 295px;
+            left: -14px;
+            top: 235px;
+        }
+
+      
+    </style>
+</head>
+
+<body class="bg-y">
+    <div class="box1 por">
+        <div class="a poa bg-b circle w50 h50">
+            <div class="b poa bg-w circle w25 h25">
+            </div>
+        </div>
+        <div class="c poa bg-b circle w50 h50">
+            <div class="b poa bg-w circle w25 h25">
+            </div>
+        </div>
+        <div class="d poa fan w25 h25 ">
+        </div>
+        <div class="e bg-y poa nike w100 h50"></div>
+        <div class="f bg-y poa nike w100 h50"></div>
+    </div>
+    <div class="g poa bd bg-red circle w100 h100">
+    </div>
+    <div class="h poa bd bg-red circle w100 h100">
+    </div>
+    <div class="box2 por  h200">
+        <div class="mouse ellipse poa bg-red2">
+            <div class="mouseInner ellipse poa bg-pink">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
