@@ -19,13 +19,15 @@ var dom = {
         return encodeURIComponent(s)
     }
 }
-var inputs = document.querySelectorAll('input')
+var inputs = document.querySelectorAll('input:not([type=hidden])')
 if (inputs && inputs.length > 0) {
     for (var index = 0; index < inputs.length; index++) {
         var el = inputs[index];
         (function (index, el) {
             var value = localStorage.getItem(dom.composeKey(index, location.href))
-            el.value = value
+            if (value) {
+                el.value = value
+            }
             //alert(2)
             el.oninput = dom.debounce(function (e) {
                 //alert(3)
