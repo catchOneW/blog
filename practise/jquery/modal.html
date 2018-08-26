@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <style>
+        div {
+            border: 1px solid red;
+        }
+
+        .modal {
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            transition: opacity .15s linear;
+            opacity: 0.5;
+            background-color: #000;
+        }
+
+        .modal .content {
+            position: relative;
+            background-color: #fff;
+            width: 600px;
+            margin: 0px auto;
+            transition: all .15s linear;
+        }
+
+        .modal .content.margin-tb {
+            margin: 150px auto;
+        }
+
+        .modal .content .header {
+            height: 200px;
+        }
+
+        .modal .content .close {
+            float: right;
+            font-size: 21px;
+            font-weight: 700;
+            line-height: 1;
+            color: #000;
+            text-shadow: 0 1px 0 #fff;
+            filter: alpha(opacity=20);
+            opacity: .2;
+        }
+
+        button.close {
+            -webkit-appearance: none;
+            padding: 0;
+            cursor: pointer;
+            background: 0 0;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="showModalBtn" type="button" value="点击">
+
+    <div class="modal">
+        <div class="content">
+            <div class="header">
+                <button class="close">X</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(() => {
+        $(".modal").hide();
+        $('#showModalBtn').click(() => {
+            $(".modal").show();
+            $(".modal .content").toggleClass('margin-tb');
+        })
+        $('.modal').click(function (e) {
+            //事件冒泡和target判断实现modal逻辑
+            if (e.target === this) {
+                $(".modal .content").toggleClass('margin-tb');
+                setTimeout(() => {
+                    $(".modal").hide();
+                }, 150);
+            }
+        })
+        $('.close').click(function (e) {
+            $(".modal .content").toggleClass('margin-tb');
+            setTimeout(() => {
+                $(".modal").hide();
+            }, 150);
+        })
+        $(".modal .content").bind('transitionend', function (e) {
+            console.log(11111);
+        })
+    })
+</script>
+
+</html>

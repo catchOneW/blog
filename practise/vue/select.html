@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <select name="" id="s" multiple v-model.number="selectValue" @change="change">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <span>Selected: {{ selectValue }}</span>
+    </div>
+</body>
+<script>
+    //设置默认选项    easy, 初始值 单个还是[]没影响
+    //监听改变        easy,watch数据,或者select加个change完事儿
+    //拿什么去交换req,单选数字，多选字符串数组
+    var vm = new Vue({
+        el: '#box',
+        data: {
+            selectValue: [],
+        },
+        methods: {
+            change() {
+                //click事件给select加是傻逼行为
+                //原生事件名onchange
+                console.log(111);
+            }
+        },
+        watch: {
+            //可以监听去getReq
+            // selectValue: function (newQuestion, oldQuestion) {
+            //    console.log(111);
+            // }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <style>
+        .progress {
+            width: 100%;
+            position: fixed;
+            z-index: 2;
+        }
+
+        .progress-bar {
+            width: 1%;
+        }
+
+        body {
+            height: 200vh;
+        }
+
+        #a {
+            position: relative;
+            left: 100px;
+            top: 100px;
+            padding: 10px;
+            background: #ccc;
+            height: 300px;
+        }
+
+        #b {
+            position: relative;
+            left: 100px;
+            top: 100px;
+            height: 100px;
+            padding: 10px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+    <div id="a">
+        <div id="b">
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        //滚动的最大距离=卷纸-相框
+        var distan = document.body.scrollHeight - window.innerHeight;
+        $(document).scroll(function (e) {
+            var a = $(document).scrollTop();
+            console.log(a);
+            var p = a / distan * 100;
+            console.log(p);
+            var pcss = p + '%';
+            $('.progress-bar').width(pcss);
+        })
+        function thrrote(fn) {
+            var a = new Date().getTime();
+            return function () {
+                var d = new Date().getTime() - a;
+                if (d > 200) {
+                    fn.apply(null, arguments);
+                }
+                a = new Date().getTime();
+            }
+        }
+        $('.progress-bar').click(thrrote(() => {
+            console.log(11111111);
+        }))
+    })
+</script>
+
+</html>

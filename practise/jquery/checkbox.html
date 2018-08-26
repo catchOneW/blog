@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+</head>
+
+<body>
+    1
+    <input type="checkbox" name="a" id="" value="1"> 2
+    <input type="checkbox" name="b" id="" value="2"> 3
+    <input type="checkbox" name="c" id="" value="3"> 4
+    <input type="checkbox" name="d" id="" value="4">
+</body>
+<script>
+    $(() => {
+        var i = 0;
+        //手动设置,需要通过属性去设置
+        //var cb = $('input[name=a]').attr('checked',true);
+
+
+        //监听change事件
+        $('input:checkbox').change(function () {
+            console.log($(this).is(':checked'));
+            console.log(getReq());
+        })
+        
+        //抓取check到的数据集合
+        function getReq() {
+            var checkValue = [];
+            $('input:checkbox:checked').each(function () {
+                checkValue.push(this.value);
+            })
+            return checkValue;
+        }
+    })
+</script>
+
+</html>

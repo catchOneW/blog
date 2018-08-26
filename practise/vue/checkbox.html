@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <span>checkedValue: {{ checkedNames }}</span>
+    </div>
+</body>
+<script>
+    //侧重点在于快速拿到构造好的请求参数,不擅长全选什么的，把所有valuepush进去太蛋疼了
+
+    //设置默认选项    
+    //checked失效
+    //有v-for，可以设置true，判断index都可以
+    //没有v-for必须要用数组！！！设置默认值
+    //所谓复选框，本身数据就是一组的获取的，样式也统一
+
+    //监听改变        easy,watch数据,不需要事件v-on已经写好了
+    
+    //拿什么去交换req, checkbox很特别啊，v-model可以设置true选中，选出来的值又是value
+    var vm = new Vue({
+        el: '#box',
+        data: {
+            checkedNames: ["Jack"],
+        },
+    })
+
+
+</script>
+
+</html>

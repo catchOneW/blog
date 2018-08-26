@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap.css">
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    
+    <link href="https://cdn.bootcss.com/bootstrap-daterangepicker/3.0.3/daterangepicker.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/moment.js/2.22.1/moment.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-daterangepicker/3.0.3/daterangepicker.js"></script>
+
+
+</head>
+
+<body>
+    <div class="inline">
+        <label>时间段:</label>
+        <div class="date-picker form-inline-control" id="dateTimeRange">
+            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+            <span id="searchDateRange"></span>
+            <b class="caret"></b>
+        </div>
+    </div>
+
+</body>
+<script>
+    //http://www.css88.com/jquery-ui-api/datepicker/#option-dateFormat
+    $(() => {
+        $("#dateTimeRange span").html(moment().subtract(1, 'hours').format('YYYY-MM-DD HH:mm') + '~' + moment().format('YYYY-MM-DD HH:mm'));
+        $("#dateTimeRange").daterangepicker(
+            {
+                maxDate: moment(), //最大时间  
+                dateLimit: {
+                    days: 30
+                }, //起止时间的最大间隔  
+                showDropdowns: true,
+                showWeekNumbers: false, //是否显示第几周  
+                timePicker: true, //是否显示小时和分钟  
+                timePickerIncrement: 60, //时间的增量，单位为分钟  
+                timePicker12Hour: false, //是否使用12小时制来显示时间  
+                ranges: {
+                    '最近1小时': [moment().subtract(1, 'hours'), moment()],
+                    '今日': [moment().startOf('day'), moment()],
+                    '昨日': [moment().subtract(1, 'days').startOf('day'), moment().subtract(1, 'days').endOf('day')],
+                    '最近7日': [moment().subtract(6, 'days'), moment()],
+                    '最近30日': [moment().subtract(29, 'days'), moment()]
+                },
+                opens: 'right', //日期选择框的弹出位置  
+                buttonClasses: ['btn btn-default'],
+                applyClass: 'btn-small btn-primary blue',
+                cancelClass: 'btn-small',
+                locale: {
+                    applyLabel: '确定',
+                    cancelLabel: '取消',
+                    fromLabel: '起始时间',
+                    toLabel: '结束时间',
+                    customRangeLabel: '自定义',
+                    daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+                    monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
+                        '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                    firstDay: 1
+                }
+            },
+            function (start, end, label) {
+                // 格式化日期显示框  
+                console.log(1111111111);
+                
+                $("#dateTimeRange span").html(start.subtract(1, 'hours').format('YYYY-MM-DD HH:mm') + '~' + end.format('YYYY-MM-DD HH:mm'));
+            });
+    })
+</script>
+
+</html>

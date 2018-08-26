@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        1
+        <input type="radio"  name="a" v-model="checkedValue" value="1"> 2
+        <input type="radio"  name="a" v-model="checkedValue" value="2"> 3
+        <input type="radio"  name="a" v-model="checkedValue" value="3"> 4
+        <input type="radio"  name="a" v-model="checkedValue" value="4">
+        <span>checkedValue: {{ checkedValue }}</span>
+    </div>
+</body>
+<script>
+    //设置默认选项   easy
+    //监听改变       easy,watch数据免得每个加change
+    //拿什么去交换req,单选数字，多选字符串数组
+    var vm = new Vue({
+        el: '#box',
+        data: {
+            checkedValue: 1,
+        },
+    })
+</script>
+
+</html>

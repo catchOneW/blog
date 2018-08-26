@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/rxjs/5.6.0-forward-compat.5/Rx.min.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <button id="dragTarget">点击</button>
+    </div>
+</body>
+<script>
+    //var button = document.querySelector('button');
+    let Observable = Rx.Observable
+
+    var mousemove = Rx.Observable.merge(
+        Rx.Observable.fromEvent(document, 'mousemove')
+            .map((e) => { e.preventDefault(); return e; }),
+        Rx.Observable.fromEvent(document, 'touchmove'))
+        .map((e) => e.touches[0]),
+        //
+        mouseup = Rx.Observable.merge(
+            Rx.Observable.fromEvent(document, 'mouseup'),
+            Rx.Observable.fromEvent(document, 'touchend')),
+        //
+        mousedown = Rx.Observable.merge(
+            Rx.Observable.fromEvent(document, 'mousedown'),
+            Rx.Observable.fromEvent(document, 'touchstart')
+                .map((e) => {
+
+                }));
+
+    mousedown
+        .flatMap((start) => {
+            console.log(start);
+        })
+        .map((mm) => {
+            console.log(mm)
+        })
+        .takeUntil(mouseup)
+        .subscribe(function (pos) {
+            console.log(pos);
+        });
+
+
+
+</script>
+
+</html>
