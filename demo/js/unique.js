@@ -14,3 +14,7 @@ function unique(arr) {
 }
 
 unique([1, 5, 2, 3, 4, 2, 3, 1, 3, 4])
+
+function unique(arr) {
+    return arr.filter((x, index) => arr.indexOf(x) == index);
+}
