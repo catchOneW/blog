@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/Swiper/4.3.0/css/swiper.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/layout.css">
+    <link rel="stylesheet" href="./css/box.css">
+    <link rel="stylesheet" href="./css/resume.css">
+    <script src="//at.alicdn.com/t/font_737599_u33sg5qt9db.js"></script>
+    <style type="text/css">
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+
+        .mask {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes spand {
+            0% {
+                border-left: 30px solid blueviolet;
+                border-top-width: 20px;
+                border-bottom-width: 20px;
+                opacity: 1;
+            }
+
+            100% {
+                border-left: 120px solid blueviolet;
+                border-top-width: 80px;
+                border-bottom-width: 80px;
+                opacity: 0;
+            }
+        }
+
+        .box1,
+        .box2 {
+            animation: spand 1.5s infinite linear;
+        }
+
+        .box2 {
+            animation-delay: 1s;
+        }
+
+        .header-scroll {
+            top: 0;
+            padding: 10px;
+            position: sticky;
+            background-color: #fff;
+            box-shadow: -1px 7px 33px 0px rgba(0, 0, 0, 0.75);
+        }
+
+        .header-scroll li {
+            color: black !important;
+        }
+
+        .active {
+            border: 10px solid red;
+        }
+
+        .swiperBox {
+            max-width: 1020px;
+        }
+
+        .swiper-container {}
+
+        .swiper-button-next {
+            right: -10%;
+        }
+
+        .swiper-button-prev {
+            left: -10%;
+        }
+
+        [class*=swiper-button] {
+            border-radius: 50%;
+            background-color: #fff;
+            padding: 10px 20px
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="mask poa-full">
+        <div class="box2 triangle poa-c">
+        </div>
+        <div class="box1 triangle poa-c">
+        </div>
+    </div> -->
+    <div class="main">
+        <div class="header clear">
+            <div class="logo fll">
+                <span>kaiqiw</span>
+            </div>
+            <div class="menu flr">
+                <ul class="nav">
+                    <li class="por">
+                        <a href="#about">关于</a>
+                        <ul class="poa-l hide">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                    <li class="por">
+                        <a href="#skill">技能</a>
+                        <ul class="poa-l hide">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                    <li class="por">
+                        <a href="#product">作品</a>
+                        <ul class="poa-l hide">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                    <li class="por">
+                        <a href="">博客</a>
+                        <ul class="poa-l hide">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                    <li class="por">
+                        <a href="">日历</a>
+                        <ul class="poa-l hide">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                    <li class="por">
+                        <a href="">联系方式</a>
+                        <ul class="poa-l hide">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                    <li class="por">
+                        <a href="">其他</a>
+                        <ul class="poa-l hide">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="banner">
+        </div>
+        <main class="myCard bbox m0a">
+            <div id="about" class="row info">
+                <div class="col5">
+                    <img src="https://frankfang.github.io/resume-15-2/img/avatar.jpg" alt="">
+                </div>
+                <div class="col7">
+                    <span class="tag">
+                        Hello
+                    </span>
+                    <h1>
+                        kaiqiw
+                    </h1>
+                    <p>
+                        前端开发工程师
+                    </p>
+                    <hr>
+                    <div class="fields">
+                        <div class="row">
+                            <div class="col3">年龄</div>
+                            <div class="col7">25</div>
+                        </div>
+                        <div class="row">
+                            <div class="col3">所在城市</div>
+                            <div class="col7">深圳</div>
+                        </div>
+                        <div class="row">
+                            <div class="col3">邮箱</div>
+                            <div class="col7">1104215365@qq.com</div>
+                        </div>
+                        <div class="row">
+                            <div class="col3">手机</div>
+                            <div class="col7">13618618167</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="foot tac">
+                <a href="">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                </a>
+                <a href="">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-twitter"></use>
+                    </svg>
+                </a>
+                <a href="">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                </a>
+            </div>
+        </main>
+
+        <section class="tac">
+            <div class="download tac mb20">
+                <a href="" download>下载简历</a>
+            </div>
+            <p class="tac mb50">
+                初级前端工程师
+                <br> 技能：前端，Node.js，c#
+            </p>
+            <h1 id="skill" class="tac mb20">
+                技能
+            </h1>
+            <div class="skill m0a mb50">
+                <div class="row">
+                    <div class="col5">
+                        <p>HTML 5 & CSS 3</p>
+                        <div class="progress"></div>
+                    </div>
+                    <div class="col5">
+                        <p>js & typescript</p>
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col5">
+                        <p>vue</p>
+                        <div class="progress"></div>
+                    </div>
+                    <div class="col5">
+                        <p>react</p>
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col5">
+                        <p>数据结构和算法</p>
+                        <div class="progress"></div>
+                    </div>
+                    <div class="col5">
+                        <p>设计模式</p>
+                        <div class="progress"></div>
+                    </div>
+                </div>
+            </div>
+            <h1 id="product" class="tac mb20">
+                作品集
+            </h1>
+            <div class="proMenu dib">
+                <ul class="nav">
+                    <li id="a">
+                        <a href="#1">所有</a>
+                    </li>
+                    <li id="b">
+                        <a href="#2">框架</a>
+                    </li>
+                    <li id="c">
+                        <a href="#3">原生CSS&JS</a>
+                    </li>
+                </ul>
+                <div id="progress" class="progress a"></div>
+            </div>
+            <div class="proImg m0a">
+                <div class="row">
+                    <div class="col8">
+                        <img src="https://frankfang.github.io/resume-15-3/img/1.jpg" alt="">
+                    </div>
+                    <div class="col4">
+                        <div>
+                            <img src="https://frankfang.github.io/resume-15-3/img/2.jpg" alt="">
+                        </div>
+                        <div>
+                            <img src="https://frankfang.github.io/resume-15-3/img/3.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="swiperBox bg-w mlra mt20 por">
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img class="w100p" src="img/1.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="w100p" src="img/2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next poa"></div>
+            <div class="swiper-button-prev poa"></div>
+        </div>
+
+        <!-- <div class="mt20  bg-w">
+            <h1 id="product" class="tac mb20">
+                评论区
+            </h1>
+            <ul id="ulBox">
+
+            </ul>
+            <div>
+                <input id="comment" type="text" placeholder="请输入评论">
+                <input id="user" type="text" placeholder="请输入姓名">
+                <button id="add">提交</button>
+            </div>
+        </div> -->
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/Swiper/4.3.0/js/swiper.min.js"></script>
+<!-- 存储服务 -->
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.9.0/dist/av-min.js"></script>
+<!-- 实时消息服务 -->
+<script src="//cdn.jsdelivr.net/npm/leancloud-realtime@4.2.0/dist/realtime.browser.min.js"></script>
+
+<script src="js/dom.js"></script>
+<script src="js/canvas.js"></script>
+<script src="js/animate.js"></script>
+<script>
+    ; (function () {
+
+
+        a.onclick = function () {
+            progress.className = 'progress a';
+        }
+        b.onclick = function () {
+            progress.className = 'progress b';
+        }
+        c.onclick = function () {
+            progress.className = 'progress c';
+        }
+
+        //loading anim
+        // setTimeout(() => {
+        //     dom.toggleClass({
+        //         el: '.mask',
+        //         className: 'hide'
+        //     })
+        //     dom.toggleClass({
+        //         el: '.main',
+        //         className: 'hide'
+        //     })
+        // }, 2000)
+
+        //scroll  choose division
+        // let targetIds = ['about', 'skill', 'product']
+        // dom.onScroll({
+        //     el: document,
+        //     className: 'header-scroll',
+        //     scroll() {
+        //         if (window.scrollY > 0) {
+        //             dom.add({
+        //                 el: '.header',
+        //                 className: 'header-scroll'
+        //             })
+        //         } else {
+        //             dom.remove({
+        //                 el: '.header',
+        //                 className: 'header-scroll'
+        //             })
+        //         }
+        //         let offsetTops = []
+        //         for (const iterator of targetIds) {
+        //             let el = dom.$el('#' + iterator)
+        //             offsetTops.push(el.offsetTop)
+        //         }
+        //         let index = util.minDistanc(window.scrollY, offsetTops)
+        //         //
+        //         for (const iterator of targetIds) {
+        //             let el = dom.$el('#' + iterator)
+        //             dom.remove({
+        //                 el: el,
+        //                 className: 'active'
+        //             })
+        //         }
+        //         dom.add({
+        //             el: dom.$el('#' + targetIds[index]),
+        //             className: 'active'
+        //         })
+        //     }
+        // })
+
+
+        let liEls = document.querySelectorAll('.menu .nav>li')
+        for (let index = 0; index < liEls.length; index++) {
+            let li = liEls[index];
+            dom.onHover({
+                el: li,
+                mouseenter(e) {
+                    dom.remove({
+                        el: li.lastElementChild,
+                        className: 'hide'
+                    })
+                },
+                mouseleave(e) {
+                    dom.add({
+                        el: li.lastElementChild,
+                        className: 'hide'
+                    })
+                },
+            })
+        }
+
+        let aLinks = document.querySelectorAll('.menu .nav>li>a')
+        for (let index = 0; index < aLinks.length; index++) {
+            let aLink = aLinks[index];
+            aLink.onclick = function () {
+                let hash = aLink.getAttribute('href').slice(1)
+                let targetEL = document.getElementById(hash)
+                let y1 = window.scrollY
+                let y2 = targetEL.offsetTop - 55
+                let dertaY = y2 - y1
+                animate.frameAnim({
+                    T: Math.abs(dertaY) / 2,
+                    easeFn: ease.linear,
+                    dertaY: dertaY,
+                    animated(percentX, percentY) {
+                        window.scrollTo(0, y1 + this.dertaY * percentY)
+                    }
+                })
+                return false;
+            }
+        }
+
+
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        //leancloud
+        // var APP_ID = 'ShbWHTbDe490MJjPrROi89Ah-gzGzoHsz';
+        // var APP_KEY = 'fPUASivv3vvBduC0a8bhgASH';
+
+        // AV.init({
+        //     appId: APP_ID,
+        //     appKey: APP_KEY
+        // });
+        // var Table = AV.Object.extend('user');
+        // var table = new Table();
+        // //
+        // add.onclick = function () {
+        //     table.save({
+        //         user: user.value,
+        //         word: comment.value
+        //     }).then(function (object) {
+        //         let a = document.createElement('li')
+        //         a.innerText = user.value + ':' + comment.value
+        //         ulBox.appendChild(a)
+        //     })
+        // }
+        // //
+        // var query = new AV.Query('user');
+        // query.find().then(function (res) {
+        //     let arr = res.map(x => x.attributes)
+        //     arr.forEach(element => {
+        //         let a = document.createElement('li')
+        //         a.innerText = element.user + ':' + element.word
+        //         ulBox.appendChild(a)
+        //     });
+        // })
+
+    })()
+
+</script>
+
+</html>
