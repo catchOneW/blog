@@ -1,0 +1,5 @@
+
+//if null,取默认值，不消失
+@function val($a, $n) {
+    @return if($a, $a, $n)
+}

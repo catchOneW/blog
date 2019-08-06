@@ -1,0 +1,88 @@
+// ninePalaceLattice
+// $posiont:[
+//     [
+//         {top:0,left:0},
+//         {top:0,left:50%,self:-50%},
+//         {top:0,right:0},
+//     ],
+//     [
+//         {top:50%,left:0},
+//         {top:50%,left:50%,self:-50%},
+//         {top:50%,right:0},
+//     ],
+//     [
+//         {bottom:0,left:0},
+//         {bottom:0,left:50%,self:-50%},
+//         {bottom:0,right:0},
+//     ]
+// ]
+// @for $x from 1 to $posiont.len {
+//     @for $y from 1 to $posiont[$x].len {
+//         .a {
+//             $posiont[$x][$y]
+//         }
+//     }
+// }
+@mixin por($l:0, $t:0, $w:null, $h:null, $tx:0, $ty:0) {
+    position: relative;
+    left: $l;
+    top: $t;
+    width: $w;
+    height: $h;
+    transform: translate($tx, $ty);
+}
+
+@mixin por4($r:0, $b:0, $w:null, $h:null, $tx:0, $ty:0,$deg:0) {
+    position: relative;
+    left: $r;
+    bottom: $b;
+    width: $w;
+    height: $h;
+    //如何不覆盖，而是拼接
+    transform: translate($tx, $ty) rotate($deg);
+}
+
+// 1-2
+// 3-4
+//后出现的dom在最上层
+@mixin poa($l:0, $t:0, $w:null, $h:null, $tx:0, $ty:0) {
+    position: absolute;
+    left: $l;
+    top: $t;
+    width: $w;
+    height: $h;
+    transform: translate($tx, $ty);
+}
+
+@mixin poa2($r:0, $b:0, $w:null, $h:null) {
+    position: absolute;
+    right: $r;
+    top: $b;
+    width: $w;
+    height: $h;
+}
+
+@mixin poa3($r:0, $b:0, $w:null, $h:null) {
+    position: absolute;
+    right: $r;
+    bottom: $b;
+    width: $w;
+    height: $h;
+}
+
+@mixin poa4($r:0, $b:0, $w:null, $h:null) {
+    position: absolute;
+    left: $r;
+    bottom: $b;
+    width: $w;
+    height: $h;
+}
+
+@mixin fix($l:0, $t:0, $w:null, $tx:0, $ty:0, $z:10) {
+    position: fixed;
+    left: $l;
+    top: $t;
+    width: $w;
+    transform: translate($tx, $ty);
+    z-index: $z;
+}

@@ -1,0 +1,7 @@
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+//transition函数和keyframes可继续封装

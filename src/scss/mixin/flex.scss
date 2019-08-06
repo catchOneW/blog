@@ -1,0 +1,19 @@
+//flow
+@mixin df($jc:auto,$ai:auto, $dir:row, $wrap:nowrap) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-flow: $dir $wrap;
+}
+@mixin dfItem($fx:1, $fs:1, $dirX:null,$dirY:null) {
+    box-sizing: border-box;
+    flex: $fx;
+    @if $dirX==left {
+        margin-right: auto;
+    }
+    @if $dirX==right {
+        margin-left: auto;
+    }
+    align-self: $dirY;
+    //flex-shrink: $fs;
+}

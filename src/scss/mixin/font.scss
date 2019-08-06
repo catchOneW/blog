@@ -1,0 +1,41 @@
+//font
+@each $px in $fzArr {
+    .fz#{$px} {
+        font-size: $px;
+    }
+}
+@mixin font($fz, $fw, $ep:null, $align:null) {
+    font-size: $fz;
+    font-weight: $fw;
+    text-align: $align;
+    @if $ep==1 {
+        @extend .ep1;
+    }
+    @if $ep==2 {
+        @extend .ep2;
+    }
+}
+//font-ellipsis,text-truncate
+.ep1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ep2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+//font-flow
+@each $k,
+$v in $dirMap {
+    .ta#{$k} {
+        text-align:#{$v}
+    }
+    .va#{$k} {
+        vertical-align:#{$v}
+    }
+}

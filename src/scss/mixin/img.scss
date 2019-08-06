@@ -1,0 +1,12 @@
+
+@mixin img {
+    // Part 1: Set a maximum relative to the parent
+    max-width: 100%;
+    // Part 2: Override the height to auto, otherwise images will be stretched
+    // when setting a width and height attribute on the img element.
+    height: auto;
+     //防止字体的baseline
+    vertical-align: top;
+}
+
+//裁剪形状

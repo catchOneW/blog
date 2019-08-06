@@ -1,0 +1,124 @@
+$grid-breakpoints: (xs: 0,
+sm: 576px,
+md: 768px,
+lg: 992px,
+xl: 1200px);
+
+@function nextName($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+    $index: index($breakpoint-names, $name);
+    @return if($index !=null and $index < length($breakpoint-names), nth($breakpoint-names, $index + 1), null);
+}
+
+@function zeroNoValue($name, $breakpoints: $grid-breakpoints) {
+    $val: map-get($breakpoints, $name);
+    @return if($val !=0, $val, null);
+}
+
+@function zeroNoName($name, $breakpoints: $grid-breakpoints) {
+    @return if(zeroNoValue($name, $breakpoints)==null, "", "-#{$name}");
+}
+
+@function decrease($name, $breakpoints: $grid-breakpoints) {
+    $next: nextName($name, $breakpoints);
+    @return if($next, zeroNoValue($next, $breakpoints) - .02, null);
+}
+
+@mixin breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+    $min: zeroNoValue($name, $breakpoints);
+
+    @if $min {
+        @media (min-width: $min) {
+            @content;
+        }
+    }
+
+    @else {
+        @content;
+    }
+}
+
+@mixin breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+    $max: decrease($name, $breakpoints);
+
+    @if $max {
+        @media (max-width: $max) {
+            @content;
+        }
+    }
+
+    @else {
+        @content;
+    }
+}
+
+//no use
+//lower~upper
+@mixin breakpoint-bt($lower, $upper, $breakpoints: $grid-breakpoints) {
+    $min: zeroNoValue($lower, $breakpoints);
+    $max: decrease($upper, $breakpoints);
+
+    @if $min !=null and $max !=null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    }
+
+    @else if $max==null {
+        @include breakpoint-up($lower, $breakpoints) {
+            @content;
+        }
+    }
+
+    @else if $min==null {
+        @include breakpoint-down($upper, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+//最好这样写，up down里不能有相同属性，否则有可能同事生效
+//完整版
+@mixin breakpoint-full($name, $breakpoints: $grid-breakpoints) {
+    $min: zeroNoValue($name, $breakpoints);
+    $max: decrease($name, $breakpoints);
+
+    @if $min !=null and $max !=null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    }
+
+    //最右边
+    @else if $max==null {
+        @include breakpoint-up($name, $breakpoints) {
+            @content;
+        }
+    }
+
+    //最左边
+    @else if $min==null {
+        @include breakpoint-down($name, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+@each $k in map-keys($grid-breakpoints) {
+    @include breakpoint-full($k) {
+        $infix: zeroNoName($k);
+        .a#{$infix}{
+            //不变的
+        }
+    }
+}
+//自己页面里，需要改变的地方，不需要if了直接-name写出来，不错不错
+.a{
+    @include wh()
+}
+.a-xl{
+    @include wh()
+}
+.a-lg{
+    @include wh()
+}
+//class="a a-xl a-lg"

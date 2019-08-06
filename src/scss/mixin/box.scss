@@ -1,0 +1,101 @@
+//demension&bd
+//gap margin和padding自带函数 pd1-2-3-4即可
+
+.w100p {
+    width: 100%;
+}
+
+.h100p {
+    height: 100%;
+}
+
+.wh100p {
+    width: 100%;
+    height: 100%;
+}
+
+@mixin wh($w:null, $h:null) {
+    width: $w;
+    height: $h;
+}
+
+//$w:1px 带默认值的为可选参数，必须没有默认值的在前面，我佛了
+@mixin bd($w:1px,
+$bd-color:$gray-300,
+$br:0, $c1:null, $c2:null, $c3:null, $c4:null,
+$br1:0, $br2:0, $br3:0, $br4:0) {
+    box-sizing: border-box;
+    border: $w solid $bd-color;
+    border-radius: $br;
+
+    border-top-color: $c1;
+    border-right-color: $c2;
+    border-bottom-color: $c3;
+    border-left-color: $c4;
+
+    border-top-left-radius: $br1;
+    border-top-right-radius: $br2;
+    border-bottom-right-radius: $br3;
+    border-bottom-left-radius: $br4;
+}
+
+
+@for $n from 1 to 12 {
+    .w#{$n} {
+        width: $n*100/12#{'%'};
+        box-sizing: border-box;
+    }
+
+    .h#{$n} {
+        height: $n*100/12#{'%'};
+        box-sizing: border-box;
+    }
+}
+
+@each $px in $gapArr {
+    .pd#{$px} {
+        padding: $px;
+    }
+
+    .pdtb#{$px} {
+        padding: $px 0;
+    }
+
+    .pdlr#{$px} {
+        padding: 0 $px;
+    }
+}
+
+@each $alis,
+$dir in $dirMap {
+    @each $px in $gapArr {
+        .m#{$alis}#{$px} {
+            margin-#{$dir}: $px;
+        }
+
+        .pd#{$alis}#{$px} {
+            padding-#{$dir}: $px;
+        }
+    }
+}
+
+.ma {
+    margin: auto;
+}
+
+.mlra {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mtba {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+@each $alis,
+$dir in $dirMap {
+    .bd#{$alis} {
+        border-#{$dir}: 1px solid $black;
+    }
+}

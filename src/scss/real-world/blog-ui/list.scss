@@ -1,0 +1,7 @@
+
+.list{
+    .type{
+       @include font(25px,bolder,null,center); 
+        padding: 20px 0;
+    }
+}

@@ -1,0 +1,15 @@
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+@mixin clearfix() {
+    &::after {
+        display: block;
+        clear: both;
+        content: "";
+    }
+}

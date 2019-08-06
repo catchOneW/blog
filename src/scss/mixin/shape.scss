@@ -1,0 +1,28 @@
+@mixin triangle($dir, $w, $c) {
+    height: 0;
+    width: 0;
+
+    @if $dir {
+        @include bd($w, transparent, $b, transparent, transparent)
+    }
+
+    @if $dir {
+        @include bd($w, transparent, $g, transparent, transparent)
+    }
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.pill {
+    border-radius: 50rem;
+}
+
+.rect {
+    border-radius: 0;
+}
+.diamond{
+    @include wh(10px,10px);
+    transform: rotate(45deg);
+}
